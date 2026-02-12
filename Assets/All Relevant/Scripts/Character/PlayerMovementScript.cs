@@ -8,6 +8,9 @@ public class PlayerMovementScript : MonoBehaviour
     [Header("Player Move")]
     private float moveSpeed = 9f;
 
+
+    private bool isGrounded;
+
     Rigidbody rb;
 
     // Start
