@@ -622,8 +622,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camHolder: {fileID: 1186652361}
-  moveSpeed: 9
+  moveSpeed: 12
   gravityForce: -9.81
+  jumpForce: 3
 --- !u!143 &1105715348
 CharacterController:
   m_ObjectHideFlags: 0
@@ -696,8 +697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1105715343}
-  mouseSensitivity: 200
-  distance: 5
+  mouseSensitivity: 500
+  distance: 10
   defaultLayer:
     serializedVersion: 2
     m_Bits: 1
