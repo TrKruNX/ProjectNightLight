@@ -1,6 +1,7 @@
 using Unity.Hierarchy;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovementScript : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private Transform camHolder;
 
     [Header("Player Move")]
-    private float moveSpeed = 9f;
-    private float gravityForce = -9.81f;
+    [SerializeField] private float moveSpeed = 9f;
+    [SerializeField] private float gravityForce = -9.81f;
 
     private Vector3 move;
     private Vector3 verticalVelocity;
@@ -42,9 +43,9 @@ public class PlayerMovementScript : MonoBehaviour
         // Move the character
         // Time.deltaTime ensures smooth, consistent movement regardless of frame rate
         transform.Translate(move * moveSpeed * Time.deltaTime);
-        //transform.rotation = camHolder.rotation;
         move.y = verticalVelocity.y;
 
+        MovePlayerBasedOnCamera();
     }
 
     private void MovePlayerBasedOnCamera()

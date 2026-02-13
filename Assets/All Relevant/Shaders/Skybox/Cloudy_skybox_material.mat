@@ -56,8 +56,10 @@ Material:
     - _CloudIntensity: 0.9
     - _CloudScale: 240.35
     - _CloudScatter: 0.855
+    - _Not_zero: 0.001
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _no_0: 0.001
     m_Colors:
     - _PanSpeed: {r: 0.01, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []

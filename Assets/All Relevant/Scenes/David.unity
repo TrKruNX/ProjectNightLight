@@ -622,6 +622,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camHolder: {fileID: 1186652361}
+  moveSpeed: 9
+  gravityForce: -9.81
 --- !u!143 &1105715348
 CharacterController:
   m_ObjectHideFlags: 0
