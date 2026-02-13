@@ -12,7 +12,7 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private LayerMask defaultLayer;
 
     
-    [SerializeField] private float minY = -30f; // lowest camera angle
+    [SerializeField] private float minY = -20f; // lowest camera angle
     [SerializeField] private float maxY = 65f;  // highest camera angle
 
     private float mouseX;

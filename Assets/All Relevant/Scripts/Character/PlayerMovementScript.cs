@@ -1,3 +1,5 @@
+using Unity.Hierarchy;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
@@ -7,25 +9,23 @@ public class PlayerMovementScript : MonoBehaviour
 
     [Header("Player Move")]
     private float moveSpeed = 9f;
+    private float gravityForce = -9.81f;
 
+    private Vector3 move;
+    private Vector3 verticalVelocity;
 
-    private bool isGrounded;
-
-    Rigidbody rb;
+    private CharacterController characterController;
 
     // Start
     private void Start()
     {
-        rb = GetComponentInChildren<Rigidbody>();
-
-        // Basically command to freeze rigidbody in specifiq angles "|" <-- this means "and/or"
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        characterController = GetComponent<CharacterController>();
     }
 
     // Update
     private void Update()
     {
-        
+        GravityOfPlayer();
     }
 
     private void FixedUpdate()
@@ -36,12 +36,34 @@ public class PlayerMovementScript : MonoBehaviour
         float moveZ = Input.GetAxisRaw("Vertical");   // -1 to 1 (back/forward)
 
         // Calculate Move Direction
-        Vector3 move = new Vector3(moveX, 0f, moveZ);
+        move = new Vector3(moveX, 0f, moveZ);
 
 
         // Move the character
         // Time.deltaTime ensures smooth, consistent movement regardless of frame rate
         transform.Translate(move * moveSpeed * Time.deltaTime);
+        //transform.rotation = camHolder.rotation;
+        move.y = verticalVelocity.y;
 
+    }
+
+    private void MovePlayerBasedOnCamera()
+    {
+
+    }
+
+    private void GravityOfPlayer()
+    {
+        // verticalVelocity = Vector3.zero;
+
+        if (characterController.isGrounded == true)
+        {
+            verticalVelocity.y = -0.5f;
+        }
+        else
+        {
+            verticalVelocity.y -= gravityForce * Time.deltaTime;
+            Debug.Log(verticalVelocity.y);
+        }
     }
 }
