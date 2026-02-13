@@ -35,7 +35,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        var playerRotCam = transform.position;
+        var playerRotCam = playerObj.position-transform.position;
         playerRotCam.y = 0f;
 
 
@@ -47,9 +47,11 @@ public class ThirdPersonCamera : MonoBehaviour
         
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
+            // need to rotate player based on input, and camera rotation
+
             playerObj.rotation = Quaternion.LookRotation(playerRotCam);
-            //playerObj.Rotate(this.transform.rotation, mouseSensitivity * Time.deltaTime);
         }
+
     }
 
 
