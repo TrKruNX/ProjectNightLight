@@ -283,9 +283,6 @@
         },
         {
             "m_Id": "9248b5d20a9746b78b87193d775d9974"
-        },
-        {
-            "m_Id": "525e5f648f314c0e9570607a47f3d68e"
         }
     ],
     "m_StickyNoteDatas": [
@@ -1588,8 +1585,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 1034.0001220703125,
-            "y": 1435.0001220703125
+            "x": 879.199951171875,
+            "y": 952.7999877929688
         },
         "m_Blocks": [
             {
@@ -1605,8 +1602,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 1034.0001220703125,
-            "y": 1635.000244140625
+            "x": 879.199951171875,
+            "y": 1152.7999267578125
         },
         "m_Blocks": [
             {
@@ -4345,17 +4342,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.GroupData",
-    "m_ObjectId": "525e5f648f314c0e9570607a47f3d68e",
-    "m_Title": "Skybox",
-    "m_Position": {
-        "x": -1194.0,
-        "y": 1945.0001220703125
-    }
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "531f223e1feb4662981f855f6fef6432",
     "m_Id": 2,
@@ -6327,8 +6313,8 @@
     "m_ObjectId": "9248b5d20a9746b78b87193d775d9974",
     "m_Title": "Skybox",
     "m_Position": {
-        "x": 1768.0,
-        "y": -654.0
+        "x": 1767.2001953125,
+        "y": -655.9999389648438
     }
 }
 
@@ -8120,10 +8106,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -555.0,
-            "y": 779.9999389648438,
-            "width": 130.00003051757813,
-            "height": 118.0
+            "x": -548.800048828125,
+            "y": 770.4000854492188,
+            "width": 128.79998779296876,
+            "height": 117.5999755859375
         }
     },
     "m_Slots": [
@@ -9598,8 +9584,8 @@
     "m_ObjectId": "e04e8ab7296c4a0eb58a7ed6920ac568",
     "m_Title": "Skybox",
     "m_Position": {
-        "x": -1205.0,
-        "y": 115.0
+        "x": -1205.5999755859375,
+        "y": 112.79994201660156
     }
 }
 
