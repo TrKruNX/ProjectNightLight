@@ -17,6 +17,7 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private float gravityForce = -9.81f;
     [SerializeField] private float jumpForce = 5f;
     public bool isJumping;
+    public int jumpsLeft = 1;
 
     private Vector3 move;
     private Vector3 verticalVelocity;
@@ -94,16 +95,23 @@ public class PlayerMovementScript : MonoBehaviour
     private void GravityOfPlayer()
     {
 
-        if (characterController.isGrounded == true && !isJumping)
+        if (characterController.isGrounded == true && !isJumping && !grapplingScript.isGrappling)
         {
             verticalVelocity.y = -0.5f;
+            jumpsLeft = 1;
+            grapplingScript.grapplesLeft = 1;
         }
-        else if (characterController.isGrounded == false)
+        else if (grapplingScript.isGrappling)
+        {
+            verticalVelocity.y = -0.5f;
+            gravityForce = -4;
+        }
+        else if (characterController.isGrounded == false && !grapplingScript.isGrappling)
         {
             verticalVelocity.y += gravityForce * Time.deltaTime;
-            Debug.Log(verticalVelocity.y);
+            gravityForce = -9.81f;
         }
-        else
+        else if (characterController.isGrounded)
         {
             isJumping = false;
         }
@@ -111,10 +119,11 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void JumpMech()
     {
-        if (characterController.isGrounded == true)
+        if (jumpsLeft >= 1)
         {
             verticalVelocity.y = jumpForce;
             isJumping = true;
+            jumpsLeft--;
         }
     }
 }

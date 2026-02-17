@@ -8,13 +8,18 @@ public class ThirdPersonCamera : MonoBehaviour
     [Header("Player Logic")]
     [SerializeField] private Transform playerObj;
 
+    [Header("Ui Logic")]
+    [SerializeField] private GameObject crossHair;
 
     [Header("camLogic")]
     [SerializeField] private float mouseSensitivity = 200f;
     [SerializeField] private float distance = 10f;
     [SerializeField] private LayerMask defaultLayer;
+    [SerializeField] private Camera mainCamera;
 
-    
+
+
+
     [SerializeField] private float minY = -20f; // lowest camera angle
     [SerializeField] private float maxY = 65f;  // highest camera angle
 
@@ -25,6 +30,13 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        print("Buttons: ");
+        print("Jump - Space");
+        print("WASD - Move");
+        print("R - aimGrapple");
+        print("LeftMouseButton + R - Grapple");
+        print("V - Reset level");
     }
 
     void Update()
@@ -32,8 +44,23 @@ public class ThirdPersonCamera : MonoBehaviour
         mouseX += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         mouseY -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        mouseY = Mathf.Clamp(mouseY, minY, maxY);
+        if (grapplingScript.isAimGrappling && Input.GetMouseButton(0))
+        {
+            grapplingScript.RayCastGrapple();
+            
+        }
+        else
+        {
+            grapplingScript.isGrappling = false;
+        }
 
+        /*
+        // work in progress, want to make it start grappling on a pres, and if I press again, stop grappling
+        else if (grapplingScript.isGrappling && Input.GetMouseButtonDown(0))
+        {
+            grapplingScript.isGrappling = false;
+        }
+        */
     }
 
     void LateUpdate()
@@ -41,16 +68,21 @@ public class ThirdPersonCamera : MonoBehaviour
         if (grapplingScript.isAimGrappling == false)
         {
             ThirdPersonLogic();
+            crossHair.SetActive(false);
         }
         else
         {
             FirstPersonLogic();
+            crossHair.SetActive(true);
         }
     }
 
 
     private void ThirdPersonLogic()
     {
+        mainCamera.fieldOfView = 80;
+        mouseY = Mathf.Clamp(mouseY, minY, maxY);
+
         Quaternion rotation = Quaternion.Euler(mouseY, mouseX, 0);
         Vector3 offset = rotation * Vector3.back * distance;
 
@@ -60,26 +92,24 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void FirstPersonLogic()
     {
+
+        mainCamera.fieldOfView = 80;
+        mouseY = Mathf.Clamp(mouseY, -65f, 65f);
+
+        // Rotate camera
+        Quaternion rotation = Quaternion.Euler(mouseY, mouseX, 0);
+        transform.rotation = rotation;
+
+        playerObj.rotation = transform.rotation;
         
+        transform.position = grapplingScript.firstPersonLoc.position;
     }
 
-    // This doesnt work just yes, but it will be way to prevent clipping in the prototyping
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 0)
-        {
-            mouseSensitivity = -200f;
-            Debug.Log("Layer Is detected");
-        }
-        else
-        {
-            mouseSensitivity = 200f;
-        }
-
         if (collision.gameObject.CompareTag("Default"))
         {
             mouseSensitivity = -200f;
-            Debug.Log("Layer Is detected");
         }
         else
         {

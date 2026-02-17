@@ -2,14 +2,19 @@ using UnityEngine;
 
 public class GrapplinghookScript : MonoBehaviour
 {
+    [SerializeField] private PlayerMovementScript playerMove;
 
     [Header("CamLocations")]
-    [SerializeField] private GameObject firstPersonLoc;
-    [SerializeField] private GameObject thirdPersonLoc;
+    public Transform firstPersonLoc;
+    [SerializeField] private Transform camHolder;
 
+    public Transform playerObj;
+
+    public int grapplesLeft = 1;
     public bool isAimGrappling;
-    
-    
+    public bool isGrappling;
+
+
     // Start
     void Start()
     {
@@ -20,15 +25,6 @@ public class GrapplinghookScript : MonoBehaviour
     void Update()
     {
         GrappleLogic();
-
-        if (isAimGrappling == true)
-        {
-            transform.position = firstPersonLoc.transform.position;
-        }
-        else
-        {
-            transform.position = thirdPersonLoc.transform.position;
-        }
     }
 
     private void GrappleLogic()
@@ -38,6 +34,7 @@ public class GrapplinghookScript : MonoBehaviour
             if (isAimGrappling == false)
             {
                 isAimGrappling = true;
+                
             }
         }
         else if (Input.GetKeyUp(KeyCode.R))
@@ -47,5 +44,30 @@ public class GrapplinghookScript : MonoBehaviour
                 isAimGrappling = false;
             }
         }
+    }
+
+    public void RayCastGrapple()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 15f))
+        {
+            if (hit.collider.CompareTag("GrapplingMe"))
+            {
+                Vector3 targetPos = hit.collider.transform.position;
+                
+                
+                playerObj.transform.position = Vector3.Lerp(playerObj.transform.position, targetPos, 100f * Time.deltaTime);
+               
+                
+                isGrappling = true;
+                playerMove.jumpsLeft = 1;
+                grapplesLeft--;
+
+                Debug.Log("Du Treffer");
+            }
+        }
+
+        Debug.DrawRay(camHolder.position, camHolder.forward * 15f, Color.green);
     }
 }
