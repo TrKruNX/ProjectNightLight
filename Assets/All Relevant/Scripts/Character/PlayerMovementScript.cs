@@ -3,9 +3,12 @@ using Unity.Hierarchy;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    [Header("Scripts")]
+    [SerializeField] private GrapplinghookScript grapplingScript;
 
     [SerializeField] private Transform camHolder;
 
@@ -29,6 +32,12 @@ public class PlayerMovementScript : MonoBehaviour
     // Update
     private void Update()
     {
+        // temp reset
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            SceneManager.LoadScene(1);
+        }
+
         // Get input from keyboard (WASD or arrow keys)
         float moveX = Input.GetAxisRaw("Horizontal"); // -1 to 1 (left/right)
         float moveZ = Input.GetAxisRaw("Vertical");   // -1 to 1 (back/forward)

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
+    [Header("Scripts")]
+    [SerializeField] private GrapplinghookScript grapplingScript;
+
     [Header("Player Logic")]
     [SerializeField] private Transform playerObj;
 
@@ -35,14 +38,30 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void LateUpdate()
     {
+        if (grapplingScript.isAimGrappling == false)
+        {
+            ThirdPersonLogic();
+        }
+        else
+        {
+            FirstPersonLogic();
+        }
+    }
+
+
+    private void ThirdPersonLogic()
+    {
         Quaternion rotation = Quaternion.Euler(mouseY, mouseX, 0);
         Vector3 offset = rotation * Vector3.back * distance;
 
         transform.position = playerObj.position + offset;
         transform.LookAt(playerObj.position);
-
     }
 
+    private void FirstPersonLogic()
+    {
+        
+    }
 
     // This doesnt work just yes, but it will be way to prevent clipping in the prototyping
     private void OnCollisionEnter(Collision collision)
