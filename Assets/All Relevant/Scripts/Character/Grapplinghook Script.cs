@@ -12,13 +12,17 @@ public class GrapplinghookScript : MonoBehaviour
     [SerializeField] private Transform camHolder;
 
     public Transform playerObj;
+    [SerializeField] private Transform playerHand;
 
     public int grapplesLeft = 1;
     public bool isAimGrappling;
     public bool isGrappling;
+    public bool isObjGrapple;
 
     private Vector3 targetPos;
+    private Transform objToMe;
     [SerializeField] private LayerMask grappleToMeLayer;
+    [SerializeField] private LayerMask grappleObjToMe;
 
 
     // Start
@@ -51,6 +55,11 @@ public class GrapplinghookScript : MonoBehaviour
             playerObj.position = Vector3.Lerp(playerObj.position, targetPos, 75f * Time.deltaTime);
         }
 
+        if (isObjGrapple == true)
+        {
+            objToMe.position = Vector3.Lerp(objToMe.position, playerHand.position, 15f * Time.deltaTime);
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
             if (isGrappling == true)
@@ -60,7 +69,17 @@ public class GrapplinghookScript : MonoBehaviour
             }
             else
             {
-                targetPos = new Vector3(0f, 0f, 0f);
+                targetPos = Vector2.zero;
+            }
+
+            if (isObjGrapple == true)
+            {
+                isObjGrapple = false;
+                crossHair.SetActive(false);
+            }
+            else
+            {
+                targetPos = Vector3.zero;
             }
         }
     }
@@ -78,6 +97,14 @@ public class GrapplinghookScript : MonoBehaviour
             crossHair.SetActive(true);
         }
 
-            Debug.DrawRay(camHolder.position, camHolder.forward * 20f, Color.green);
+        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 20f, grappleObjToMe))
+        {
+            objToMe = hit.collider.transform;
+            isObjGrapple = true;
+
+            crossHair.SetActive(true);
+        }
+
+        Debug.DrawRay(camHolder.position, camHolder.forward * 20f, Color.green);
     }
 }

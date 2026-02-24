@@ -56,7 +56,7 @@ Material:
     - _CloudIntensity: 0.9
     - _CloudScale: 240.35
     - _CloudScatter: 0.855
-    - _Grainy_Scale: 0.88
+    - _Grainy_Scale: 0.71
     - _Not_zero: 0.001
     - _QueueControl: 0
     - _QueueOffset: 0
