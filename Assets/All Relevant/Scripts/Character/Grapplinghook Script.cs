@@ -1,8 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class GrapplinghookScript : MonoBehaviour
 {
     [SerializeField] private PlayerMovementScript playerMove;
+
+    [SerializeField] private GameObject crossHair;
 
     [Header("CamLocations")]
     public Transform firstPersonLoc;
@@ -13,6 +16,9 @@ public class GrapplinghookScript : MonoBehaviour
     public int grapplesLeft = 1;
     public bool isAimGrappling;
     public bool isGrappling;
+
+    private Vector3 targetPos;
+    [SerializeField] private LayerMask grappleToMeLayer;
 
 
     // Start
@@ -29,19 +35,32 @@ public class GrapplinghookScript : MonoBehaviour
 
     private void GrappleLogic()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+
+        if (Input.GetMouseButtonDown(1) && isAimGrappling == false)
         {
-            if (isAimGrappling == false)
-            {
-                isAimGrappling = true;
-                
-            }
+            isAimGrappling = true;
         }
-        else if (Input.GetKeyUp(KeyCode.R))
+        else if (Input.GetMouseButtonUp(1) && isAimGrappling == true)
         {
-            if (isAimGrappling == true)
+            isAimGrappling = false;
+        }
+
+
+        if (isGrappling == true)
+        {
+            playerObj.position = Vector3.Lerp(playerObj.position, targetPos, 25f * Time.deltaTime);
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (isGrappling == true)
             {
-                isAimGrappling = false;
+                isGrappling = false;
+                crossHair.SetActive(false);
+            }
+            else
+            {
+                targetPos = new Vector3(0f, 0f, 0f);
             }
         }
     }
@@ -50,24 +69,15 @@ public class GrapplinghookScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 15f))
+        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 20f, grappleToMeLayer))
         {
-            if (hit.collider.CompareTag("GrapplingMe"))
-            {
-                Vector3 targetPos = hit.collider.transform.position;
-                
-                
-                playerObj.transform.position = Vector3.Lerp(playerObj.transform.position, targetPos, 100f * Time.deltaTime);
-               
-                
-                isGrappling = true;
-                playerMove.jumpsLeft = 1;
-                grapplesLeft--;
+            targetPos = hit.collider.transform.position;
+            isGrappling = true;
 
-                Debug.Log("Du Treffer");
-            }
+            grapplesLeft--;
+            crossHair.SetActive(true);
         }
 
-        Debug.DrawRay(camHolder.position, camHolder.forward * 15f, Color.green);
+            Debug.DrawRay(camHolder.position, camHolder.forward * 20f, Color.green);
     }
 }

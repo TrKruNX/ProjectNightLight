@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cloudy_skybox_material
-  m_Shader: {fileID: -6465566751694194690, guid: 8beb28a9dfea8de41ba02356f19f9b6e, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 98026c41016414546ab15d4b68d418f1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

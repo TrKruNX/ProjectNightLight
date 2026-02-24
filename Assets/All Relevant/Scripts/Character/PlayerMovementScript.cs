@@ -17,7 +17,7 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private float gravityForce = -9.81f;
     [SerializeField] private float jumpForce = 5f;
     public bool isJumping;
-    public int jumpsLeft = 1;
+    public int jumpsLeft = 2;
 
     private Vector3 move;
     private Vector3 verticalVelocity;
@@ -98,7 +98,7 @@ public class PlayerMovementScript : MonoBehaviour
         if (characterController.isGrounded == true && !isJumping && !grapplingScript.isGrappling)
         {
             verticalVelocity.y = -0.5f;
-            jumpsLeft = 1;
+            jumpsLeft = 2;
             grapplingScript.grapplesLeft = 1;
         }
         else if (grapplingScript.isGrappling)

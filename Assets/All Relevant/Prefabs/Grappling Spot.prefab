@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3260869023091597554}
   - component: {fileID: 3358545205578816961}
   - component: {fileID: 6777878321761227759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grappling Spot
-  m_TagString: GrapplingMe
+  m_TagString: MeToGrapple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

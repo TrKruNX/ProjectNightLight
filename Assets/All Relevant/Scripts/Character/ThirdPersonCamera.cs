@@ -44,14 +44,9 @@ public class ThirdPersonCamera : MonoBehaviour
         mouseX += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         mouseY -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        if (grapplingScript.isAimGrappling && Input.GetMouseButton(0))
+        if (grapplingScript.isAimGrappling && Input.GetMouseButtonDown(0))
         {
             grapplingScript.RayCastGrapple();
-            
-        }
-        else
-        {
-            grapplingScript.isGrappling = false;
         }
 
         /*
@@ -94,7 +89,7 @@ public class ThirdPersonCamera : MonoBehaviour
     {
 
         mainCamera.fieldOfView = 80;
-        mouseY = Mathf.Clamp(mouseY, -65f, 65f);
+        mouseY = Mathf.Clamp(mouseY, -85f, 85f);
 
         // Rotate camera
         Quaternion rotation = Quaternion.Euler(mouseY, mouseX, 0);
