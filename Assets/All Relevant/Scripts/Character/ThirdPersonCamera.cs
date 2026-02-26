@@ -100,16 +100,4 @@ public class ThirdPersonCamera : MonoBehaviour
         transform.position = grapplingScript.firstPersonLoc.position;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Default"))
-        {
-            mouseSensitivity = -200f;
-        }
-        else
-        {
-            mouseSensitivity = 200f;
-        }
-    }
-
 }
