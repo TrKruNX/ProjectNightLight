@@ -12,6 +12,15 @@ public class PowerUps : MonoBehaviour
         {
             playerHealthScript.NewMaxHealth(120f);
         }
+
+        if (other.CompareTag("NewRespawnLoc"))
+        {
+            playerHealthScript.checkpointPos = transform.position;
+
+            Debug.Log(playerHealthScript.checkpointPos);
+
+            playerHealthScript.ResetPos();
+        }
     }
 
 

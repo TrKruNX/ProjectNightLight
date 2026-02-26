@@ -8,6 +8,8 @@ public class PlayerHealthScript : MonoBehaviour
     private float maxPlayerhealth;
     [SerializeField] private TextMeshProUGUI hpLeft;
 
+    public Vector3 checkpointPos;
+
     private void Start()
     {
         maxPlayerhealth = 13f;
@@ -20,7 +22,6 @@ public class PlayerHealthScript : MonoBehaviour
 
         if (currentPlayerHealth <= 0)
         {
-            Debug.Log("1");
             ResetPos();
         }
     }
@@ -37,16 +38,15 @@ public class PlayerHealthScript : MonoBehaviour
         UpdatePlayerHealthText();
     }
 
-    private void ResetPos()
+    public void ResetPos()
     {
         if (currentPlayerHealth > 0)
             return;
 
-        Debug.Log("2");
         playerObj.GetComponent<CharacterController>().enabled = false;
-        
-        playerObj.position = new Vector3(0f, 3f, 0f);
-        
+
+        playerObj.position = checkpointPos;
+
         playerObj.GetComponent<CharacterController>().enabled = true;
 
 

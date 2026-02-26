@@ -1,6 +1,7 @@
 using System.Threading;
 using Unity.Hierarchy;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public class PlayerMovementScript : MonoBehaviour
 {
     [Header("Scripts")]
     [SerializeField] private GrapplinghookScript grapplingScript;
+    [SerializeField] private PlayerHealthScript playerHealthScript;
 
     [SerializeField] private Transform camHolder;
 
