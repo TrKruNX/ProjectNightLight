@@ -4,8 +4,7 @@ using UnityEngine;
 public class PlayerHealthScript : MonoBehaviour
 {
     [SerializeField] private Transform playerObj;
-    [SerializeField] private Transform newPos;
-    [SerializeField] private float playerHealth = 13;
+    [SerializeField] private float currentPlayerHealth = 13;
     private float maxPlayerhealth;
     [SerializeField] private TextMeshProUGUI hpLeft;
 
@@ -15,11 +14,11 @@ public class PlayerHealthScript : MonoBehaviour
         UpdatePlayerHealthText();
     }
     public void PlayerDmgTake(float damageAmount)
-    { 
-        playerHealth -= damageAmount;
+    {
+        currentPlayerHealth -= damageAmount;
         UpdatePlayerHealthText();
 
-        if (playerHealth <= 0)
+        if (currentPlayerHealth <= 0)
         {
             Debug.Log("1");
             ResetPos();
@@ -28,19 +27,30 @@ public class PlayerHealthScript : MonoBehaviour
 
     public void UpdatePlayerHealthText()
     {
-        hpLeft.text = "Health: " + playerHealth.ToString();
+        hpLeft.text = "Health: " + currentPlayerHealth.ToString();
+    }
+
+    public void NewMaxHealth(float maxHealth)
+    {
+        currentPlayerHealth = maxHealth;
+
+        UpdatePlayerHealthText();
     }
 
     private void ResetPos()
     {
-        if (playerHealth > 0)
+        if (currentPlayerHealth > 0)
             return;
 
         Debug.Log("2");
-        playerObj.position = newPos.position;
-        //transform.position = new Vector3(0f, 3f, 0f);
+        playerObj.GetComponent<CharacterController>().enabled = false;
         
-        playerHealth = maxPlayerhealth;
+        playerObj.position = new Vector3(0f, 3f, 0f);
+        
+        playerObj.GetComponent<CharacterController>().enabled = true;
+
+
+        currentPlayerHealth = maxPlayerhealth;
         UpdatePlayerHealthText();
     }
 }

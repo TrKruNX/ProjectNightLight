@@ -48,14 +48,6 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             grapplingScript.RayCastGrapple();
         }
-
-        /*
-        // work in progress, want to make it start grappling on a pres, and if I press again, stop grappling
-        else if (grapplingScript.isGrappling && Input.GetMouseButtonDown(0))
-        {
-            grapplingScript.isGrappling = false;
-        }
-        */
     }
 
     void LateUpdate()

@@ -4,21 +4,22 @@ using UnityEngine.SceneManagement;
 public class DealDmgScript : MonoBehaviour
 {
     [SerializeField] private PlayerHealthScript playerHealthScript;
-    [SerializeField] private LayerMask playerlayer;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    Scene currentScene;
+    string sceneName;
+
+    private void Start()
     {
-
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
     }
 
-    // Update is called once per frame
+    // Update
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(sceneName);
         }
     }
 
@@ -26,7 +27,6 @@ public class DealDmgScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("3");
             playerHealthScript.PlayerDmgTake(100f);
         }
     }
