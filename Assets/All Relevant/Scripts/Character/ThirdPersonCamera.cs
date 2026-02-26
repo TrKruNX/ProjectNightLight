@@ -60,7 +60,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        if (grapplingScript.isAimGrappling == false)
+        if (grapplingScript.isAimGrappling == false && grapplingScript.isGrappling == false && grapplingScript.isObjGrapple == false)
         {
             ThirdPersonLogic();
             crossHair.SetActive(false);
