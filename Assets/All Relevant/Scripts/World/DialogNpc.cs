@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class DialogNpc : MonoBehaviour
 {
+    [TextArea(2, 3)]
+    public string[] dialogueLines;
+
+    /*
     [SerializeField] private GameObject npcDialogueBox;
     [SerializeField] private TextMeshProUGUI[] npcDialogueText;
 
@@ -36,4 +40,5 @@ public class DialogNpc : MonoBehaviour
             npcDialogueBox.SetActive(false);
         }
     }
+    */
 }
