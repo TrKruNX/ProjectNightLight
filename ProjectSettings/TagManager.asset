@@ -13,6 +13,9 @@ TagManager:
   - DoubleJumpOn
   - GrappleOn
   - CheckpointTurt
+  - TutorialEnd
+  - NoobPlayer
+  - EndTurt
   layers:
   - Default
   - TransparentFX

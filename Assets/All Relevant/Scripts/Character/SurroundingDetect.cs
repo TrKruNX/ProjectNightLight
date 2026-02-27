@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SurroundingDetect : MonoBehaviour
 {
@@ -36,6 +37,11 @@ public class SurroundingDetect : MonoBehaviour
             {
                 pressEText.SetActive(true);
             }
+        }
+
+        if (other.CompareTag("TutorialEnd"))
+        {
+            SceneManager.LoadScene(1);
         }
     }
 

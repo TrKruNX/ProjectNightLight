@@ -26,6 +26,8 @@ public class GrapplinghookScript : MonoBehaviour
     [SerializeField] private LayerMask grappleObjToMe;
 
 
+    private Collider objCollider;
+
     // Start
     void Start()
     {
@@ -77,6 +79,7 @@ public class GrapplinghookScript : MonoBehaviour
             {
                 isObjGrapple = false;
                 crossHair.SetActive(false);
+                objCollider.enabled = true;
             }
             else
             {
@@ -100,12 +103,17 @@ public class GrapplinghookScript : MonoBehaviour
 
         if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, grappleObjToMe))
         {
+            
+
             objToMe = hit.collider.transform;
             isObjGrapple = true;
+
+            objCollider = objToMe.GetComponent<Collider>();
+            objCollider.enabled = false;
 
             crossHair.SetActive(true);
         }
 
-        Debug.DrawRay(camHolder.position, camHolder.forward * 30f, Color.green);
+            Debug.DrawRay(camHolder.position, camHolder.forward * 30f, Color.green);
     }
 }

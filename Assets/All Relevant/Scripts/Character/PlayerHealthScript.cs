@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerHealthScript : MonoBehaviour
 {
+    [SerializeField] private TurtorialBools turtBools;
+
     [SerializeField] private Transform playerObj;
     [SerializeField] private float currentPlayerHealth = 13;
     private float maxPlayerhealth;
@@ -15,12 +17,22 @@ public class PlayerHealthScript : MonoBehaviour
         maxPlayerhealth = 13f;
         UpdatePlayerHealthText();
     }
+
+    private void Update()
+    {
+        if (playerObj.transform.position.y <= -30f && turtBools.canEnd == false)
+        {
+            currentPlayerHealth = 0f;
+            ResetPos();
+        }
+    }
+
     public void PlayerDmgTake(float damageAmount)
     {
         currentPlayerHealth -= damageAmount;
         UpdatePlayerHealthText();
 
-        if (currentPlayerHealth <= 0)
+        if (currentPlayerHealth <= 0f)
         {
             ResetPos();
         }
@@ -40,7 +52,7 @@ public class PlayerHealthScript : MonoBehaviour
 
     public void ResetPos()
     {
-        if (currentPlayerHealth > 0 || playerObj.transform.position.y > -25f)
+        if (currentPlayerHealth > 0f)
             return;
         
         playerObj.GetComponent<CharacterController>().enabled = false;

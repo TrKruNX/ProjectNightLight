@@ -1,10 +1,5 @@
-using System.Threading;
-using Unity.Hierarchy;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+
 
 public class PlayerMovementScript : MonoBehaviour
 {
@@ -39,10 +34,6 @@ public class PlayerMovementScript : MonoBehaviour
     // Update
     private void Update()
     {
-        if (playerObj.transform.position.y <= -30f)
-        {
-            ResetPlayer();
-        }
 
         // Get input from keyboard (WASD or arrow keys)
         float moveX = Input.GetAxisRaw("Horizontal"); // -1 to 1 (left/right)
@@ -139,10 +130,5 @@ public class PlayerMovementScript : MonoBehaviour
             isJumping = true;
             jumpsLeft--;
         }
-    }
-
-    void ResetPlayer()
-    {
-        playerHealthScript.ResetPos();
     }
 }
