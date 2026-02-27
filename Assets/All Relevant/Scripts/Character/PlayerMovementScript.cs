@@ -33,15 +33,22 @@ public class PlayerMovementScript : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-    }
+}
 
     // Update
     private void Update()
     {
-        if (grapplingScript.isGrappling == false)
+        if (grapplingScript.isGrappling == true)
         {
+            jumpsLeft = 1;
             isGrappleMove = true;
         }
+        else
+        {
+            isGrappleMove = false;
+            GravityOfPlayer();
+        }
+
 
         if (isGrappleMove == false)
         {
@@ -50,8 +57,6 @@ public class PlayerMovementScript : MonoBehaviour
             float moveZ = Input.GetAxisRaw("Vertical");   // -1 to 1 (back/forward)
 
             MovePlayerBasedOnCamera(moveX, moveZ);
-
-            GravityOfPlayer();
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && tutBools.canJump == true)
@@ -79,6 +84,8 @@ public class PlayerMovementScript : MonoBehaviour
 
         // combines player input with camera direction
         Vector3 moveDirection = (camForward * moveZ + camRight * moveX); // press W, moveZ = 1
+        moveDirection = Vector3.ClampMagnitude(moveDirection, 1f); // claming so it is normalized to one if it tries to go above 1
+
 
         // flatMove removes vertical movement for rotation purposes
         // Why? LookRotation rotates the player to face a vector. We don’t want them tilting up/down, so Y = 0.
@@ -114,7 +121,6 @@ public class PlayerMovementScript : MonoBehaviour
                 jumpsLeft = 1;
             }
 
-            isGrappleMove = false;
             grapplingScript.grapplesLeft = 1;
         }
         else if (grapplingScript.isGrappling)

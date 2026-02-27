@@ -14,6 +14,7 @@ public class GrapplinghookScript : MonoBehaviour
 
     public Transform playerObj;
     [SerializeField] private Transform playerHand;
+    [SerializeField] private float sphereRadius = 0.5f;
 
     public int grapplesLeft = 1;
     public bool isAimGrappling;
@@ -22,9 +23,11 @@ public class GrapplinghookScript : MonoBehaviour
 
     private Vector3 targetPos;
     private Transform objToMe;
-    [SerializeField] private LayerMask grappleToMeLayer;
-    [SerializeField] private LayerMask grappleObjToMe;
+    [SerializeField] private LayerMask blockGrappleRaycast;
 
+    public float timer;
+    private float raycastTimer = 0.4f;
+    private bool isRayTime = false;
 
     private Collider objCollider;
     private Rigidbody objRigidbody;
@@ -39,6 +42,15 @@ public class GrapplinghookScript : MonoBehaviour
     void Update()
     {
         GrappleLogic();
+
+        if (isRayTime == true)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
+            {
+                isRayTime = false;
+            }
+        }
     }
 
     private void GrappleLogic()
@@ -56,7 +68,7 @@ public class GrapplinghookScript : MonoBehaviour
 
         if (isGrappling == true)
         {
-            playerObj.position = Vector3.Lerp(playerObj.position, targetPos, 50f * Time.deltaTime);
+            playerObj.position = Vector3.Lerp(playerObj.position, targetPos, 30f * Time.deltaTime);
         }
 
         if (isObjGrapple == true)
@@ -94,31 +106,77 @@ public class GrapplinghookScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, grappleToMeLayer))
+        if (Physics.SphereCast(camHolder.position, sphereRadius,camHolder.forward,out hit, 30f, blockGrappleRaycast))
         {
-            targetPos = hit.collider.transform.position;
-            isGrappling = true;
+            int hitLayer = hit.collider.gameObject.layer;
 
-            grapplesLeft--;
-            crossHair.SetActive(true);
+            if (hitLayer == LayerMask.NameToLayer("GrappleToMeLayer"))
+            {
+                targetPos = hit.point;
+                isGrappling = true;
+
+                grapplesLeft--;
+                crossHair.SetActive(true);
+            }
+
+            // this makes it so, if it is a wall layer/defualt layer, tehn do nothing
+            // or simpler, do something if it hits any of the grapple layers first
         }
 
-        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, grappleObjToMe))
+        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, blockGrappleRaycast))
         {
-            
+            int hitLayer = hit.collider.gameObject.layer;
 
-            objToMe = hit.collider.transform;
-            isObjGrapple = true;
+            if (hitLayer == LayerMask.NameToLayer("GrappleObjToMe") && isRayTime == false)
+            {
+                RayTimerOn();
 
-            objCollider = objToMe.GetComponent<Collider>();
-            objCollider.enabled = false;
+                objToMe = hit.collider.transform;
+                isObjGrapple = true;
 
-            objRigidbody = objToMe.GetComponent<Rigidbody>();
-            objRigidbody.useGravity = false;
+                objCollider = objToMe.GetComponent<Collider>();
+                objCollider.enabled = false;
 
-            crossHair.SetActive(true);
+                objRigidbody = objToMe.GetComponent<Rigidbody>();
+                objRigidbody.useGravity = false;
+
+                crossHair.SetActive(true);
+            }
         }
+
+            /*
+             * this was a previous code that had a bug where I could go through walls, when grappling, or I could have a wall between
+             * me and object, and still grapple
+            if (Physics.SphereCast(camHolder.position, sphereRadius, camHolder.forward, out hit, 30f, grappleToMeLayer))
+            {
+                targetPos = hit.collider.transform.position;
+                isGrappling = true;
+
+                grapplesLeft--;
+                crossHair.SetActive(true);
+            }
+
+            if (Physics.SphereCast(camHolder.position, sphereRadius, camHolder.forward, out hit, 30f, grappleObjToMe))
+            {
+                objToMe = hit.collider.transform;
+                isObjGrapple = true;
+
+                objCollider = objToMe.GetComponent<Collider>();
+                objCollider.enabled = false;
+
+                objRigidbody = objToMe.GetComponent<Rigidbody>();
+                objRigidbody.useGravity = false;
+
+                crossHair.SetActive(true);
+            }
+            */
 
             Debug.DrawRay(camHolder.position, camHolder.forward * 30f, Color.green);
+    }
+
+    void RayTimerOn()
+    {
+        timer = raycastTimer;
+        isRayTime = true;
     }
 }

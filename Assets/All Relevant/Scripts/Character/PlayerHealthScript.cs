@@ -25,8 +25,7 @@ public class PlayerHealthScript : MonoBehaviour
             currentPlayerHealth = 0f;
             ResetPos();
         }
-
-        if (turtBools.canEnd == true && playerObj.transform.position.y <= -150f)
+        else if (turtBools.canEnd == true && playerObj.transform.position.y <= -2000f)
         {
             currentPlayerHealth = 0f;
             ResetPos();
