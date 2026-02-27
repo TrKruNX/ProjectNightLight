@@ -4,6 +4,7 @@ using UnityEngine;
 public class GrapplinghookScript : MonoBehaviour
 {
     [SerializeField] private PlayerMovementScript playerMove;
+    [SerializeField] private TurtorialBools tutBools;
 
     [SerializeField] private GameObject crossHair;
 
@@ -40,7 +41,7 @@ public class GrapplinghookScript : MonoBehaviour
     private void GrappleLogic()
     {
 
-        if (Input.GetMouseButtonDown(1) && isAimGrappling == false)
+        if (Input.GetMouseButtonDown(1) && isAimGrappling == false && tutBools.canGrapple == true)
         {
             isAimGrappling = true;
         }
@@ -52,7 +53,7 @@ public class GrapplinghookScript : MonoBehaviour
 
         if (isGrappling == true)
         {
-            playerObj.position = Vector3.Lerp(playerObj.position, targetPos, 75f * Time.deltaTime);
+            playerObj.position = Vector3.Lerp(playerObj.position, targetPos, 25f * Time.deltaTime);
         }
 
         if (isObjGrapple == true)
@@ -88,7 +89,7 @@ public class GrapplinghookScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 20f, grappleToMeLayer))
+        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, grappleToMeLayer))
         {
             targetPos = hit.collider.transform.position;
             isGrappling = true;
@@ -97,7 +98,7 @@ public class GrapplinghookScript : MonoBehaviour
             crossHair.SetActive(true);
         }
 
-        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 20f, grappleObjToMe))
+        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, grappleObjToMe))
         {
             objToMe = hit.collider.transform;
             isObjGrapple = true;
@@ -105,6 +106,6 @@ public class GrapplinghookScript : MonoBehaviour
             crossHair.SetActive(true);
         }
 
-        Debug.DrawRay(camHolder.position, camHolder.forward * 20f, Color.green);
+        Debug.DrawRay(camHolder.position, camHolder.forward * 30f, Color.green);
     }
 }

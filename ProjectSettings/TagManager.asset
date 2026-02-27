@@ -7,6 +7,12 @@ TagManager:
   - MeToGrapple
   - ChangeMaxHp
   - NewRespawnLoc
+  - Npcs Talk
+  - Checkpoint
+  - JumpOn
+  - DoubleJumpOn
+  - GrappleOn
+  - CheckpointTurt
   layers:
   - Default
   - TransparentFX

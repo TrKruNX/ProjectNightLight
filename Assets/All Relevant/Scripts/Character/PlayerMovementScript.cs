@@ -11,6 +11,9 @@ public class PlayerMovementScript : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private GrapplinghookScript grapplingScript;
     [SerializeField] private PlayerHealthScript playerHealthScript;
+    [SerializeField] private TurtorialBools tutBools;
+
+    [SerializeField] private GameObject playerObj;
 
     [SerializeField] private Transform camHolder;
 
@@ -19,7 +22,8 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private float gravityForce = -9.81f;
     [SerializeField] private float jumpForce = 5f;
     public bool isJumping;
-    public int jumpsLeft = 2;
+    public int jumpsLeft = 1;
+    private int maxJumpsLeft = 2;
 
     private Vector3 move;
     private Vector3 verticalVelocity;
@@ -35,10 +39,9 @@ public class PlayerMovementScript : MonoBehaviour
     // Update
     private void Update()
     {
-        // temp reset
-        if (Input.GetKeyDown(KeyCode.V))
+        if (playerObj.transform.position.y <= -30f)
         {
-            SceneManager.LoadScene(1);
+            ResetPlayer();
         }
 
         // Get input from keyboard (WASD or arrow keys)
@@ -50,7 +53,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         MovePlayerBasedOnCamera(moveX, moveZ);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && tutBools.canJump == true)
         {
             JumpMech();
         }
@@ -100,8 +103,17 @@ public class PlayerMovementScript : MonoBehaviour
         if (characterController.isGrounded == true && !isJumping && !grapplingScript.isGrappling)
         {
             verticalVelocity.y = -0.5f;
-            jumpsLeft = 2;
-            grapplingScript.grapplesLeft = 1;
+            
+            if (tutBools.canDoubleJump == true)
+            {
+                jumpsLeft = maxJumpsLeft;
+            }
+            else
+            {
+                jumpsLeft = 1;
+            }
+
+                grapplingScript.grapplesLeft = 1;
         }
         else if (grapplingScript.isGrappling)
         {
@@ -127,5 +139,10 @@ public class PlayerMovementScript : MonoBehaviour
             isJumping = true;
             jumpsLeft--;
         }
+    }
+
+    void ResetPlayer()
+    {
+        playerHealthScript.ResetPos();
     }
 }

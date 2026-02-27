@@ -13,12 +13,9 @@ public class PowerUps : MonoBehaviour
             playerHealthScript.NewMaxHealth(120f);
         }
 
-        if (other.CompareTag("NewRespawnLoc"))
+        if (other.CompareTag("Checkpoint") || other.CompareTag("CheckpointTurt"))
         {
-            playerHealthScript.checkpointPos = transform.position;
-
-            Debug.Log(playerHealthScript.checkpointPos);
-
+            playerHealthScript.checkpointPos = other.transform.position;
             playerHealthScript.ResetPos();
         }
     }

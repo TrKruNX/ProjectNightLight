@@ -40,9 +40,9 @@ public class PlayerHealthScript : MonoBehaviour
 
     public void ResetPos()
     {
-        if (currentPlayerHealth > 0)
+        if (currentPlayerHealth > 0 || playerObj.transform.position.y > -25f)
             return;
-
+        
         playerObj.GetComponent<CharacterController>().enabled = false;
 
         playerObj.position = checkpointPos;

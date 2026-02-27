@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SurroundingDetect : MonoBehaviour
 {
+    [SerializeField] private PlayerHealthScript playerHealthScript;
+
     [Header("UI")]
     public GameObject dialoguePanel;  // Assign in Inspector
     public TMP_Text dialogueText;     // Assign in Inspector
@@ -25,7 +27,7 @@ public class SurroundingDetect : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("NewRespawnLoc"))
+        if (other.CompareTag("Npcs Talk") || other.CompareTag("CheckpointTurt"))
         {
             currentNPC = other.gameObject;
             npcDialogue = currentNPC.GetComponent<DialogNpc>();
@@ -39,7 +41,7 @@ public class SurroundingDetect : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("NewRespawnLoc") && other.gameObject == currentNPC)
+        if (other.CompareTag("Npcs Talk") && other.gameObject == currentNPC || other.CompareTag("CheckpointTurt"))
         {
             currentNPC = null;
             npcDialogue = null;
