@@ -25,6 +25,12 @@ public class PlayerHealthScript : MonoBehaviour
             currentPlayerHealth = 0f;
             ResetPos();
         }
+
+        if (turtBools.canEnd == true && playerObj.transform.position.y <= -150f)
+        {
+            currentPlayerHealth = 0f;
+            ResetPos();
+        }
     }
 
     public void PlayerDmgTake(float damageAmount)

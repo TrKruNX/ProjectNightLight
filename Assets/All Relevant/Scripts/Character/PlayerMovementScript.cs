@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using UnityEngine.InputSystem;
 
 
 public class PlayerMovementScript : MonoBehaviour
@@ -20,6 +22,8 @@ public class PlayerMovementScript : MonoBehaviour
     public int jumpsLeft = 1;
     private int maxJumpsLeft = 2;
 
+    private bool isGrappleMove = false;
+
     private Vector3 move;
     private Vector3 verticalVelocity;
 
@@ -34,15 +38,21 @@ public class PlayerMovementScript : MonoBehaviour
     // Update
     private void Update()
     {
+        if (grapplingScript.isGrappling == false)
+        {
+            isGrappleMove = true;
+        }
 
-        // Get input from keyboard (WASD or arrow keys)
-        float moveX = Input.GetAxisRaw("Horizontal"); // -1 to 1 (left/right)
-        float moveZ = Input.GetAxisRaw("Vertical");   // -1 to 1 (back/forward)
+        if (isGrappleMove == false)
+        {
+            // Get input from keyboard (WASD or arrow keys)
+            float moveX = Input.GetAxisRaw("Horizontal"); // -1 to 1 (left/right)
+            float moveZ = Input.GetAxisRaw("Vertical");   // -1 to 1 (back/forward)
 
+            MovePlayerBasedOnCamera(moveX, moveZ);
 
-        GravityOfPlayer();
-
-        MovePlayerBasedOnCamera(moveX, moveZ);
+            GravityOfPlayer();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && tutBools.canJump == true)
         {
@@ -104,7 +114,8 @@ public class PlayerMovementScript : MonoBehaviour
                 jumpsLeft = 1;
             }
 
-                grapplingScript.grapplesLeft = 1;
+            isGrappleMove = false;
+            grapplingScript.grapplesLeft = 1;
         }
         else if (grapplingScript.isGrappling)
         {

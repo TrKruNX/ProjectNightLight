@@ -27,6 +27,7 @@ public class GrapplinghookScript : MonoBehaviour
 
 
     private Collider objCollider;
+    private Rigidbody objRigidbody;
 
     // Start
     void Start()
@@ -55,7 +56,7 @@ public class GrapplinghookScript : MonoBehaviour
 
         if (isGrappling == true)
         {
-            playerObj.position = Vector3.Lerp(playerObj.position, targetPos, 25f * Time.deltaTime);
+            playerObj.position = Vector3.Lerp(playerObj.position, targetPos, 50f * Time.deltaTime);
         }
 
         if (isObjGrapple == true)
@@ -80,6 +81,7 @@ public class GrapplinghookScript : MonoBehaviour
                 isObjGrapple = false;
                 crossHair.SetActive(false);
                 objCollider.enabled = true;
+                objRigidbody.useGravity = true;
             }
             else
             {
@@ -110,6 +112,9 @@ public class GrapplinghookScript : MonoBehaviour
 
             objCollider = objToMe.GetComponent<Collider>();
             objCollider.enabled = false;
+
+            objRigidbody = objToMe.GetComponent<Rigidbody>();
+            objRigidbody.useGravity = false;
 
             crossHair.SetActive(true);
         }

@@ -41,7 +41,7 @@ public class SurroundingDetect : MonoBehaviour
 
         if (other.CompareTag("TutorialEnd"))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
     }
 

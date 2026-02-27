@@ -70,6 +70,11 @@ public class TurtorialBools : MonoBehaviour
         {
             startTutorial.SetActive(false);
         }
+
+        if (other.CompareTag("EndTurt"))
+        {
+            canEnd = true;
+        }
     }
 
 

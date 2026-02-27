@@ -41,8 +41,10 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void Update()
     {
+        
         mouseX += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         mouseY -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
 
         if (grapplingScript.isAimGrappling && Input.GetMouseButtonDown(0))
         {
