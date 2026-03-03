@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SurroundingDetect : MonoBehaviour
 {
     [SerializeField] private PlayerHealthScript playerHealthScript;
+    [SerializeField] private TurtorialBools tutBools;
 
     [Header("UI")]
     public GameObject dialoguePanel;  // Assign in Inspector
@@ -28,7 +29,7 @@ public class SurroundingDetect : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Npcs Talk") || other.CompareTag("CheckpointTurt"))
+        if (other.CompareTag("Npcs Talk"))
         {
             currentNPC = other.gameObject;
             npcDialogue = currentNPC.GetComponent<DialogNpc>();
@@ -36,6 +37,22 @@ public class SurroundingDetect : MonoBehaviour
             if (pressEText != null)
             {
                 pressEText.SetActive(true);
+            }
+
+            if (tutBools.talkNpcTutText != null && tutBools.talkToNpcTutorial == false)
+            {
+                tutBools.talkToNpcTutorial = true;
+
+                tutBools.talkNpcTutText.SetActive(true);
+                Time.timeScale = 0f;
+
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    tutBools.OnDoneButton();
+                }
             }
         }
 
@@ -47,7 +64,7 @@ public class SurroundingDetect : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Npcs Talk") && other.gameObject == currentNPC || other.CompareTag("CheckpointTurt"))
+        if (other.CompareTag("Npcs Talk") && other.gameObject == currentNPC)
         {
             currentNPC = null;
             npcDialogue = null;
@@ -67,13 +84,16 @@ public class SurroundingDetect : MonoBehaviour
     {
         if (currentNPC != null && Input.GetKeyDown(KeyCode.E))
         {
-            if (!dialogueActive)
+            if (!tutBools.talkNpcTutText.activeInHierarchy)
             {
-                StartDialogue();
-            }
-            else
-            {
-                NextLine();
+                if (!dialogueActive)
+                {
+                    StartDialogue();
+                }
+                else
+                {
+                    NextLine();
+                }
             }
         }
     }

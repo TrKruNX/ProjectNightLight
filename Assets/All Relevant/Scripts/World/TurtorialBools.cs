@@ -7,8 +7,10 @@ public class TurtorialBools : MonoBehaviour
     public bool canDoubleJump = false;
     public bool canGrapple = false;
     public bool canEnd = false;
+    public bool talkToNpcTutorial = false;
 
     [SerializeField] private GameObject startTutorial;
+    public GameObject talkNpcTutText;
 
     private float timer;
     private float wasdTimer = 10f;
@@ -82,5 +84,15 @@ public class TurtorialBools : MonoBehaviour
     {
         timer = wasdTimer;
         hasStarted = true;
+    }
+
+    public void OnDoneButton()
+    {
+        Time.timeScale = 1f;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        talkNpcTutText.SetActive(false);
     }
 }

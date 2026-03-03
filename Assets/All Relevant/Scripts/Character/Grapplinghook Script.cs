@@ -32,11 +32,6 @@ public class GrapplinghookScript : MonoBehaviour
     private Collider objCollider;
     private Rigidbody objRigidbody;
 
-    // Start
-    void Start()
-    {
-        
-    }
 
     // Update
     void Update()
