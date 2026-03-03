@@ -33,6 +33,7 @@ public class GrapplinghookScript : MonoBehaviour
     private Collider objCollider;
     private Rigidbody objRigidbody;
 
+    [SerializeField] private Collider playerCollider;
 
     // Update
     void Update()
@@ -74,6 +75,10 @@ public class GrapplinghookScript : MonoBehaviour
             {
                 crossHairActive.SetActive(false);
             }
+        }
+        else
+        {
+            crossHairActive.SetActive(false);
         }
 
 
