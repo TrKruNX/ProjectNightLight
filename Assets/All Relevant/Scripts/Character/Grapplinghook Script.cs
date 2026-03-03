@@ -106,10 +106,10 @@ public class GrapplinghookScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.SphereCast(camHolder.position, sphereRadius,camHolder.forward,out hit, 30f, blockGrappleRaycast))
+        if (Physics.SphereCast(camHolder.position, sphereRadius, camHolder.forward, out hit, 30f, blockGrappleRaycast))
         {
             int hitLayer = hit.collider.gameObject.layer;
-
+            
             if (hitLayer == LayerMask.NameToLayer("GrappleToMeLayer"))
             {
                 targetPos = hit.point;
