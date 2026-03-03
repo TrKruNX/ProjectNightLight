@@ -6,7 +6,7 @@ public class GrapplinghookScript : MonoBehaviour
     [SerializeField] private PlayerMovementScript playerMove;
     [SerializeField] private TurtorialBools tutBools;
 
-    [SerializeField] private GameObject crossHair;
+    [SerializeField] private GameObject crossHairActive;
 
     [Header("CamLocations")]
     public Transform firstPersonLoc;
@@ -24,6 +24,7 @@ public class GrapplinghookScript : MonoBehaviour
     private Vector3 targetPos;
     private Transform objToMe;
     [SerializeField] private LayerMask blockGrappleRaycast;
+    [SerializeField] private LayerMask raycastOptions;
 
     public float timer;
     private float raycastTimer = 0.4f;
@@ -51,6 +52,7 @@ public class GrapplinghookScript : MonoBehaviour
     private void GrappleLogic()
     {
 
+
         if (Input.GetMouseButtonDown(1) && isAimGrappling == false && tutBools.canGrapple == true)
         {
             isAimGrappling = true;
@@ -58,6 +60,20 @@ public class GrapplinghookScript : MonoBehaviour
         else if (Input.GetMouseButtonUp(1) && isAimGrappling == true)
         {
             isAimGrappling = false;
+        }
+
+        if (isAimGrappling == true)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, raycastOptions))
+            {
+                crossHairActive.SetActive(true);
+            }
+            else
+            {
+                crossHairActive.SetActive(false);
+            }
         }
 
 
@@ -76,7 +92,6 @@ public class GrapplinghookScript : MonoBehaviour
             if (isGrappling == true)
             {
                 isGrappling = false;
-                crossHair.SetActive(false);
             }
             else
             {
@@ -86,7 +101,7 @@ public class GrapplinghookScript : MonoBehaviour
             if (isObjGrapple == true)
             {
                 isObjGrapple = false;
-                crossHair.SetActive(false);
+
                 objCollider.enabled = true;
                 objRigidbody.useGravity = true;
             }
@@ -101,7 +116,7 @@ public class GrapplinghookScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.SphereCast(camHolder.position, sphereRadius, camHolder.forward, out hit, 30f, blockGrappleRaycast))
+        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, blockGrappleRaycast))
         {
             int hitLayer = hit.collider.gameObject.layer;
             
@@ -111,7 +126,6 @@ public class GrapplinghookScript : MonoBehaviour
                 isGrappling = true;
 
                 grapplesLeft--;
-                crossHair.SetActive(true);
             }
 
             // this makes it so, if it is a wall layer/defualt layer, tehn do nothing
@@ -134,8 +148,6 @@ public class GrapplinghookScript : MonoBehaviour
 
                 objRigidbody = objToMe.GetComponent<Rigidbody>();
                 objRigidbody.useGravity = false;
-
-                crossHair.SetActive(true);
             }
         }
 

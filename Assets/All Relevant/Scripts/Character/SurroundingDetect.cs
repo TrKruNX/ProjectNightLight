@@ -38,22 +38,6 @@ public class SurroundingDetect : MonoBehaviour
             {
                 pressEText.SetActive(true);
             }
-
-            if (tutBools.talkNpcTutText != null && tutBools.talkToNpcTutorial == false)
-            {
-                tutBools.talkToNpcTutorial = true;
-
-                tutBools.talkNpcTutText.SetActive(true);
-                Time.timeScale = 0f;
-
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
-
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    tutBools.OnDoneButton();
-                }
-            }
         }
 
         if (other.CompareTag("TutorialEnd"))

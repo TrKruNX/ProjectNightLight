@@ -16,6 +16,7 @@ TagManager:
   - TutorialEnd
   - NoobPlayer
   - EndTurt
+  - talkTutorial
   layers:
   - Default
   - TransparentFX

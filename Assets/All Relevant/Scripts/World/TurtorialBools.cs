@@ -32,6 +32,11 @@ public class TurtorialBools : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape) && talkNpcTutText.activeInHierarchy)
+        {
+            OnDoneButton();
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             SceneManager.LoadScene(0);
@@ -63,6 +68,25 @@ public class TurtorialBools : MonoBehaviour
         if (other.CompareTag("NoobPlayer"))
         {
             startTutorial.SetActive(true);
+        }
+
+        if (other.CompareTag("talkTutorial"))
+        {
+            if (talkNpcTutText != null && talkToNpcTutorial == false)
+            {
+                talkToNpcTutorial = true;
+
+                talkNpcTutText.SetActive(true);
+                Time.timeScale = 0f;
+
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    OnDoneButton();
+                }
+            }
         }
     }
 
