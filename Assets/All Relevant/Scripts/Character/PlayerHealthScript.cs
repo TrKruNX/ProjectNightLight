@@ -1,21 +1,24 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthScript : MonoBehaviour
 {
     [SerializeField] private TurtorialBools turtBools;
 
     [SerializeField] private Transform playerObj;
-    [SerializeField] private float currentPlayerHealth = 13;
-    private float maxPlayerhealth;
+    [SerializeField] private float currentPlayerHealth;
+    public float maxPlayerhealth = 13f;
     [SerializeField] private TextMeshProUGUI hpLeft;
 
     public Vector3 checkpointPos;
 
+    [Header("healthbar")]
+    [SerializeField] private Slider slider;
+
     private void Start()
     {
-        maxPlayerhealth = 13f;
-        UpdatePlayerHealthText();
+        currentPlayerHealth = maxPlayerhealth;
     }
 
     private void Update()
@@ -32,10 +35,22 @@ public class PlayerHealthScript : MonoBehaviour
         }
     }
 
+    public void SetHealth(float health)
+    {
+        slider.value = health;
+    }
+
+    public void SetMaxHealth(float health)
+    {
+        slider.maxValue = health;
+        slider.value = health;
+    }
+
     public void PlayerDmgTake(float damageAmount)
     {
         currentPlayerHealth -= damageAmount;
-        UpdatePlayerHealthText();
+        
+        SetHealth(currentPlayerHealth);
 
         if (currentPlayerHealth <= 0f)
         {
@@ -43,16 +58,9 @@ public class PlayerHealthScript : MonoBehaviour
         }
     }
 
-    public void UpdatePlayerHealthText()
-    {
-        hpLeft.text = "Health: " + currentPlayerHealth.ToString();
-    }
-
     public void NewMaxHealth(float maxHealth)
     {
         currentPlayerHealth = maxHealth;
-
-        UpdatePlayerHealthText();
     }
 
     public void ResetPos()
@@ -63,11 +71,11 @@ public class PlayerHealthScript : MonoBehaviour
         playerObj.GetComponent<CharacterController>().enabled = false;
 
         playerObj.position = checkpointPos;
+        SetMaxHealth(maxPlayerhealth);
 
         playerObj.GetComponent<CharacterController>().enabled = true;
 
 
         currentPlayerHealth = maxPlayerhealth;
-        UpdatePlayerHealthText();
     }
 }

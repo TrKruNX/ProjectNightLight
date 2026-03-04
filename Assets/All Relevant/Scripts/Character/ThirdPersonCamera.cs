@@ -18,8 +18,6 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private Camera mainCamera;
 
 
-
-
     [SerializeField] private float minY = -20f; // lowest camera angle
     [SerializeField] private float maxY = 65f;  // highest camera angle
 
@@ -93,5 +91,4 @@ public class ThirdPersonCamera : MonoBehaviour
         
         transform.position = grapplingScript.firstPersonLoc.position;
     }
-
 }

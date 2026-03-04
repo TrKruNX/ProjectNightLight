@@ -14,7 +14,6 @@ public class GrapplinghookScript : MonoBehaviour
 
     public Transform playerObj;
     [SerializeField] private Transform playerHand;
-    [SerializeField] private float sphereRadius = 0.5f;
 
     public int grapplesLeft = 1;
     public bool isAimGrappling;

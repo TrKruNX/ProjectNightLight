@@ -15,7 +15,7 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private Transform camHolder;
 
     [Header("Player Move")]
-    [SerializeField] private float moveSpeed = 9f;
+    private float moveSpeed = 11f;
     [SerializeField] private float gravityForce = -9.81f;
     [SerializeField] private float jumpForce = 5f;
     public bool isJumping;
@@ -27,7 +27,7 @@ public class PlayerMovementScript : MonoBehaviour
     private Vector3 move;
     private Vector3 verticalVelocity;
 
-    private CharacterController characterController;
+    public CharacterController characterController;
 
     // Start
     private void Start()
