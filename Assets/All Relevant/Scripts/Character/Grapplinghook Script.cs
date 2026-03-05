@@ -152,6 +152,8 @@ public class GrapplinghookScript : MonoBehaviour
 
                 objRigidbody = objToMe.GetComponent<Rigidbody>();
                 objRigidbody.useGravity = false;
+
+                grapplesLeft--;
             }
         }
 
