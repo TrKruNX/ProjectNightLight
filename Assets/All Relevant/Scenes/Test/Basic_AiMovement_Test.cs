@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class BasicSerialieField_AiMovement_Test : MonoBehaviour
+public class Basic_AiMovement_Test : MonoBehaviour
 {
+    private EnemyHealth aiMove;
+
     [SerializeField] private Transform playerObj;
     private Transform targetPos;
     [SerializeField] private float enemyMoveSpeed = 5f;
@@ -11,7 +13,13 @@ public class BasicSerialieField_AiMovement_Test : MonoBehaviour
     private int currentPatrolIndex = 0;
 
     private bool canMove = true;
-    private bool sawPlayer = false;
+    public bool sawPlayer = false;
+
+
+    private void Start()
+    {
+        aiMove = GetComponent<EnemyHealth>();
+    }
 
     // Update
     void Update()
@@ -24,7 +32,7 @@ public class BasicSerialieField_AiMovement_Test : MonoBehaviour
         //RaycastHit hit;
         //if (Physics.Raycast(transform.rotation, transform.forward, out hit, ))
         
-        if (canMove)
+        if (canMove == true)
         {
 
             if (sawPlayer == false)
@@ -47,35 +55,18 @@ public class BasicSerialieField_AiMovement_Test : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canMove = false;
-            transform.position = Vector3.MoveTowards(transform.position, playerObj.position, 0f * Time.deltaTime);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canMove = true;
-        }
-    }
-
     private void Patrol()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 15f))
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 15f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)) 
         {
             if (hit.collider.CompareTag("Player") && sawPlayer == false)
             {
                 sawPlayer = true;
-                return;
             }
         }
+        Debug.DrawRay(transform.position, transform.forward * 15f, Color.green);
 
         if (sawPlayer == false)
         {
@@ -92,15 +83,9 @@ public class BasicSerialieField_AiMovement_Test : MonoBehaviour
                 }
 
             }
-            else if (Vector3.Distance(transform.position, targetPos.position) > 4f)
-            {
-                Debug.Log("HEi");
-                ResetPatrol();
-            }
         }
         else
         {
-            
             Chase();
         }
     }
@@ -108,10 +93,20 @@ public class BasicSerialieField_AiMovement_Test : MonoBehaviour
     void Chase()
     {
         SimpleEnemyMove();
+
+        targetPos = playerObj;
+        
+        if (Vector3.Distance(transform.position, targetPos.position) > 10f && sawPlayer == true)
+        {
+            ResetPatrol();
+        }
+        
     }
     
     void ResetPatrol()
     {
         sawPlayer = false;
+        aiMove.TakeDamage(5f);
+        targetPos = patrolPoints[currentPatrolIndex];
     }
 }
