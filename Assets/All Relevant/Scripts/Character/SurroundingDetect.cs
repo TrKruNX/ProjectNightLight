@@ -20,7 +20,13 @@ public class SurroundingDetect : MonoBehaviour
     private int lineIndex = 0; // Tracks which line of dialogue we are on
     private bool dialogueActive = false; // True if currently talking
 
-
+    private void Awake()
+    {
+        if (SceneManager.sceneCount != 0)
+        {
+            MakeTutorialBoolsTrue();
+        }
+    }
     void Start()
     {
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
@@ -112,5 +118,12 @@ public class SurroundingDetect : MonoBehaviour
             dialoguePanel.SetActive(false);
             dialogueActive = false;
         }
+    }
+
+    void MakeTutorialBoolsTrue()
+    {
+        tutBools.canDoubleJump = true;
+        tutBools.canJump = true;
+        tutBools.canGrapple = true;
     }
 }

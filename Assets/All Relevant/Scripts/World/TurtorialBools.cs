@@ -119,4 +119,6 @@ public class TurtorialBools : MonoBehaviour
 
         talkNpcTutText.SetActive(false);
     }
+
+    
 }
