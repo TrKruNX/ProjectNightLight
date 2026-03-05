@@ -21,11 +21,24 @@ public class SurroundingDetect : MonoBehaviour
     private int lineIndex = 0; // Tracks which line of dialogue we are on
     private bool dialogueActive = false; // True if currently talking
 
+
     private void Awake()
     {
-        if (SceneManager.sceneCount != 0)
+        // Create a temporary reference to the current scene.
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // You can then access properties like the scene's name or build index:
+        string sceneName = currentScene.name;
+        int buildIndex = currentScene.buildIndex;
+
+        if (buildIndex != 0)
         {
             MakeTutorialBoolsTrue();
+        }
+
+        if (buildIndex == 1)
+        {
+            thirdPerson.canBeThirdperson = false;
         }
     }
     void Start()
@@ -52,10 +65,13 @@ public class SurroundingDetect : MonoBehaviour
             SceneManager.LoadScene(1);
         }
 
+        
         if (other.CompareTag("UnlockThirdPerson"))
         {
             thirdPerson.canBeThirdperson = true;
         }
+        
+
     }
 
     void OnTriggerExit(Collider other)

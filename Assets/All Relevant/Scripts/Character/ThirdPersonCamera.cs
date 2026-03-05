@@ -25,7 +25,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private float mouseX;
     private float mouseY;
 
-    public bool canBeThirdperson;
+    public bool canBeThirdperson = true;
 
     void Start()
     {
@@ -38,11 +38,7 @@ public class ThirdPersonCamera : MonoBehaviour
         print("R - aimGrapple");
         print("LeftMouseButton + R - Grapple");
         print("V - Reset level");
-
-        if (SceneManager.sceneCount == 1)
-        {
-            canBeThirdperson = false;
-        }
+        
     }
 
     void Update()
