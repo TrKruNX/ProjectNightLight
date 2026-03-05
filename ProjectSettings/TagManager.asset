@@ -17,6 +17,7 @@ TagManager:
   - NoobPlayer
   - EndTurt
   - talkTutorial
+  - UnlockThirdPerson
   layers:
   - Default
   - TransparentFX

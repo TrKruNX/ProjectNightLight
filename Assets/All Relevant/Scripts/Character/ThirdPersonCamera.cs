@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class ThirdPersonCamera : MonoBehaviour
     private float mouseX;
     private float mouseY;
 
+    public bool canBeThirdperson;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -35,6 +38,11 @@ public class ThirdPersonCamera : MonoBehaviour
         print("R - aimGrapple");
         print("LeftMouseButton + R - Grapple");
         print("V - Reset level");
+
+        if (SceneManager.sceneCount == 1)
+        {
+            canBeThirdperson = false;
+        }
     }
 
     void Update()
@@ -52,7 +60,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        if (grapplingScript.isAimGrappling == false && grapplingScript.isGrappling == false && grapplingScript.isObjGrapple == false)
+        if (grapplingScript.isAimGrappling == false && grapplingScript.isGrappling == false && grapplingScript.isObjGrapple == false && canBeThirdperson == true)
         {
             ThirdPersonLogic();
             crossHair.SetActive(false);

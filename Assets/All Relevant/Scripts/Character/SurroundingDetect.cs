@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SurroundingDetect : MonoBehaviour
 {
     [SerializeField] private PlayerHealthScript playerHealthScript;
+    [SerializeField] private ThirdPersonCamera thirdPerson;
     [SerializeField] private TurtorialBools tutBools;
 
     [Header("UI")]
@@ -48,7 +49,12 @@ public class SurroundingDetect : MonoBehaviour
 
         if (other.CompareTag("TutorialEnd"))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
+        }
+
+        if (other.CompareTag("UnlockThirdPerson"))
+        {
+            thirdPerson.canBeThirdperson = true;
         }
     }
 
