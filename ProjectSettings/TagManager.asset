@@ -18,6 +18,7 @@ TagManager:
   - EndTurt
   - talkTutorial
   - UnlockThirdPerson
+  - ButtonSpawnBlue
   layers:
   - Default
   - TransparentFX
