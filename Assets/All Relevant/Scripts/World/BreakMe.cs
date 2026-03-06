@@ -14,7 +14,7 @@ public class BreakMe : MonoBehaviour
         thisCollider = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
 
-        thisCollider.isTrigger = true;
+        thisCollider.isTrigger = false;
     }
 
     // Update
@@ -24,6 +24,7 @@ public class BreakMe : MonoBehaviour
         {
             thisCollider.enabled = false;
             rb.useGravity = true;
+            thisCollider.isTrigger = true;
         }
 
         if (transform.position.y < -20f)

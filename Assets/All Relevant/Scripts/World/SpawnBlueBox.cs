@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class SpawnBlueBox : MonoBehaviour
@@ -6,13 +7,7 @@ public class SpawnBlueBox : MonoBehaviour
     [SerializeField] private GameObject spawnLocation;
     [SerializeField] private Transform camHolder;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    // Update
     void Update()
     {
         RaycastHit hit;

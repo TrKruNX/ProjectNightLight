@@ -58,6 +58,7 @@ public class TurtorialBools : MonoBehaviour
         if (other.CompareTag("GrappleOn"))
         {
             canGrapple = true;
+            // Debug.Log(other.name + " triggered grapple"); // good debug log, to find name of object
         }
 
         if (other.CompareTag("EndTurt"))

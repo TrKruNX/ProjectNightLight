@@ -7107,7 +7107,7 @@ GameObject:
   - component: {fileID: 323976925}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: GrappleOn
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9605,6 +9605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealthScript: {fileID: 1105715349}
+  thirdPerson: {fileID: 0}
   tutBools: {fileID: 1105715354}
   dialoguePanel: {fileID: 868664103}
   dialogueText: {fileID: 1875022424}
@@ -21239,6 +21240,7 @@ MonoBehaviour:
   mainCamera: {fileID: 330585545}
   minY: -20
   maxY: 65
+  canBeThirdperson: 1
 --- !u!114 &1186652364
 MonoBehaviour:
   m_ObjectHideFlags: 0

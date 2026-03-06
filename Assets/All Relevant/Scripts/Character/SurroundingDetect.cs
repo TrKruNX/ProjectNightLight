@@ -13,9 +13,6 @@ public class SurroundingDetect : MonoBehaviour
     public TMP_Text dialogueText;     // Assign in Inspector
     public GameObject pressEText;     // "Press E" prompt
 
-    private GameObject pickupable;
-
-
     private GameObject currentNPC;    // The NPC we're near
     private DialogNpc npcDialogue;  // Dialogue data for that NPC
     private int lineIndex = 0; // Tracks which line of dialogue we are on
@@ -35,8 +32,7 @@ public class SurroundingDetect : MonoBehaviour
         {
             MakeTutorialBoolsTrue();
         }
-
-        if (buildIndex == 1)
+        else if (buildIndex == 1)
         {
             thirdPerson.canBeThirdperson = false;
         }
