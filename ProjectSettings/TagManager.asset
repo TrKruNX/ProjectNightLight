@@ -19,6 +19,9 @@ TagManager:
   - talkTutorial
   - UnlockThirdPerson
   - NextLevel
+  - LostJump
+  - LostDoubleJump
+  - LostGrapple
   layers:
   - Default
   - TransparentFX

@@ -81,6 +81,22 @@ public class SurroundingDetect : MonoBehaviour
                 SceneManager.LoadScene(nextScene);
             }
         }
+
+        if (other.CompareTag("LostJump"))
+        {
+            tutBools.canJump = false;
+        }
+
+        if (other.CompareTag("LostDoubleJump"))
+        {
+            tutBools.canDoubleJump = false;
+        }
+
+        if (other.CompareTag("LostGrapple"))
+        {
+            tutBools.canGrapple = false;
+        }
+
     }
 
     void OnTriggerExit(Collider other)
@@ -116,6 +132,16 @@ public class SurroundingDetect : MonoBehaviour
                     NextLine();
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SceneManager.LoadScene(currentScene.buildIndex - 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            SceneManager.LoadScene(nextScene);
         }
     }
 
