@@ -19,6 +19,7 @@ TagManager:
   - talkTutorial
   - UnlockThirdPerson
   - ButtonSpawnBlue
+  - BlueBoxSelected
   layers:
   - Default
   - TransparentFX
