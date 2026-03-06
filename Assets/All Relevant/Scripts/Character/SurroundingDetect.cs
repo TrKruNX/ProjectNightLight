@@ -19,7 +19,6 @@ public class SurroundingDetect : MonoBehaviour
     private bool dialogueActive = false; // True if currently talking
 
     private Scene currentScene;
-    private string sceneName;
     private int buildIndex;
     private int nextScene;
 
@@ -29,7 +28,6 @@ public class SurroundingDetect : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
 
         // You can then access properties like the scene's name or build index:
-        sceneName = currentScene.name;
         buildIndex = currentScene.buildIndex;
         nextScene = currentScene.buildIndex + 1;
 
@@ -38,7 +36,8 @@ public class SurroundingDetect : MonoBehaviour
         {
             MakeTutorialBoolsTrue();
         }
-        else if (buildIndex == 1)
+        
+        if (buildIndex == 1)
         {
             thirdPerson.canBeThirdperson = false;
         }
@@ -62,20 +61,25 @@ public class SurroundingDetect : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("TutorialEnd"))
-        {
-            SceneManager.LoadScene(nextScene);
-        }
-
-        
         if (other.CompareTag("UnlockThirdPerson"))
         {
             thirdPerson.canBeThirdperson = true;
         }
 
+        if (other.CompareTag("TutorialEnd"))
+        {
+            if ( nextScene < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(nextScene);
+            }
+        }
+
         if (other.CompareTag("NextLevel"))
         {
-            SceneManager.LoadScene(nextScene);
+            if (nextScene < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(nextScene);
+            }
         }
     }
 
