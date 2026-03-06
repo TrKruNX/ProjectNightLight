@@ -51,13 +51,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlendHeight: 0.09
-    - _CloudDensity: 0.826
+    - _BlendHeight: 0.03
+    - _CloudDensity: 0.719
     - _CloudIntensity: 0.9
     - _CloudScale: 240.35
     - _CloudScatter: 0.855
-    - _Grainy_Scale: 0.63
-    - _Not_zero: 0.001
+    - _Grainy_Scale: 0.53
+    - _Not_zero: 0.0001
     - _QueueControl: 0
     - _QueueOffset: 0
     - _no_0: 0.001
