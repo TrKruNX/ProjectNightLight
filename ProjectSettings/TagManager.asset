@@ -18,7 +18,10 @@ TagManager:
   - EndTurt
   - talkTutorial
   - UnlockThirdPerson
-  - ButtonSpawnBlue
+  - NextLevel
+  - LostJump
+  - LostDoubleJump
+  - LostGrapple
   layers:
   - Default
   - TransparentFX

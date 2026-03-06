@@ -18,21 +18,26 @@ public class SurroundingDetect : MonoBehaviour
     private int lineIndex = 0; // Tracks which line of dialogue we are on
     private bool dialogueActive = false; // True if currently talking
 
+    private Scene currentScene;
+    private int buildIndex;
+    private int nextScene;
 
     private void Awake()
     {
         // Create a temporary reference to the current scene.
-        Scene currentScene = SceneManager.GetActiveScene();
+        currentScene = SceneManager.GetActiveScene();
 
         // You can then access properties like the scene's name or build index:
-        string sceneName = currentScene.name;
-        int buildIndex = currentScene.buildIndex;
+        buildIndex = currentScene.buildIndex;
+        nextScene = currentScene.buildIndex + 1;
+
 
         if (buildIndex != 0)
         {
             MakeTutorialBoolsTrue();
         }
-        else if (buildIndex == 1)
+        
+        if (buildIndex == 1)
         {
             thirdPerson.canBeThirdperson = false;
         }
@@ -56,17 +61,41 @@ public class SurroundingDetect : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("TutorialEnd"))
-        {
-            SceneManager.LoadScene(1);
-        }
-
-        
         if (other.CompareTag("UnlockThirdPerson"))
         {
             thirdPerson.canBeThirdperson = true;
         }
-        
+
+        if (other.CompareTag("TutorialEnd"))
+        {
+            if ( nextScene < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(nextScene);
+            }
+        }
+
+        if (other.CompareTag("NextLevel"))
+        {
+            if (nextScene < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(nextScene);
+            }
+        }
+
+        if (other.CompareTag("LostJump"))
+        {
+            tutBools.canJump = false;
+        }
+
+        if (other.CompareTag("LostDoubleJump"))
+        {
+            tutBools.canDoubleJump = false;
+        }
+
+        if (other.CompareTag("LostGrapple"))
+        {
+            tutBools.canGrapple = false;
+        }
 
     }
 
@@ -103,6 +132,16 @@ public class SurroundingDetect : MonoBehaviour
                     NextLine();
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SceneManager.LoadScene(currentScene.buildIndex - 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            SceneManager.LoadScene(nextScene);
         }
     }
 

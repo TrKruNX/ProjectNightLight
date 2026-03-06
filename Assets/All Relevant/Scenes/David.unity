@@ -26218,7 +26218,7 @@ Transform:
   m_GameObject: {fileID: 1684982981}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.65, y: 35.46, z: -161.92}
+  m_LocalPosition: {x: 72.46, y: 35.46, z: -153.24}
   m_LocalScale: {x: 1, y: 1.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26238,7 +26238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - There are also dangers
-  - These are Grey and...
+  - These ULTRA RED cubes...
   - '"WILL" kill you if you touch them'
 --- !u!136 &1684982984
 CapsuleCollider:
@@ -31935,15 +31935,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2780321299520642551, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 68.27
+      value: 72.25
       objectReference: {fileID: 0}
     - target: {fileID: 2780321299520642551, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.568413
+      value: 37.69
       objectReference: {fileID: 0}
     - target: {fileID: 2780321299520642551, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -161.91
+      value: -152.87
       objectReference: {fileID: 0}
     - target: {fileID: 2780321299520642551, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -31976,6 +31976,14 @@ PrefabInstance:
     - target: {fileID: 4997484419123364384, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116207780167663816, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
+      propertyPath: m_Size.x
+      value: 19.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116207780167663816, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
+      propertyPath: m_Size.y
+      value: 6.49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
