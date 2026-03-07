@@ -9,7 +9,6 @@ public class PlayerHealthScript : MonoBehaviour
     [SerializeField] private Transform playerObj;
     [SerializeField] private float currentPlayerHealth;
     public float maxPlayerhealth = 13f;
-    [SerializeField] private TextMeshProUGUI hpLeft;
 
     public Vector3 checkpointPos;
 

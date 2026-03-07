@@ -26,6 +26,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private float mouseY;
 
     public bool canBeThirdperson = true;
+    private bool isFirstPersonPos = false;
 
     void Start()
     {
@@ -76,9 +77,12 @@ public class ThirdPersonCamera : MonoBehaviour
 
         Quaternion rotation = Quaternion.Euler(mouseY, mouseX, 0);
         Vector3 offset = rotation * Vector3.back * distance;
+        Vector3 targetPos = playerObj.position + offset;
 
-        transform.position = playerObj.position + offset;
+        transform.position = targetPos;
         transform.LookAt(playerObj.position);
+
+        isFirstPersonPos = false;
     }
 
     private void FirstPersonLogic()
@@ -88,11 +92,27 @@ public class ThirdPersonCamera : MonoBehaviour
         mouseY = Mathf.Clamp(mouseY, -85f, 85f);
 
         // Rotate camera
-        Quaternion rotation = Quaternion.Euler(mouseY, mouseX, 0);
+        Quaternion rotation = Quaternion.Euler(mouseY, mouseX, 0f);
         transform.rotation = rotation;
 
-        playerObj.rotation = transform.rotation;
-        
-        transform.position = grapplingScript.firstPersonLoc.position;
+        playerObj.rotation = Quaternion.Euler(0, mouseX, 0);
+
+        if (!isFirstPersonPos)
+        {
+            if (transform.position != grapplingScript.firstPersonLoc.position)
+            {
+
+                transform.position = Vector3.MoveTowards(transform.position, grapplingScript.firstPersonLoc.position, 120f * Time.deltaTime);
+            }
+
+            if (Vector3.Distance(transform.position, grapplingScript.firstPersonLoc.position) < 0.05f)
+            {
+                isFirstPersonPos = true;
+            }
+        }
+        else
+        {
+            transform.position = grapplingScript.firstPersonLoc.position;
+        }
     }
 }

@@ -22,6 +22,9 @@ TagManager:
   - LostJump
   - LostDoubleJump
   - LostGrapple
+  - LostThirdPerson
+  - LostAll
+  - GainAll
   layers:
   - Default
   - TransparentFX

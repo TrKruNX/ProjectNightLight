@@ -51,7 +51,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlendHeight: 0.08
+    - _BlendHeight: 0.01
     - _CloudDensity: 0.826
     - _CloudIntensity: 0.9
     - _CloudScale: 240.35

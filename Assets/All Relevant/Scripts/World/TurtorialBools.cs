@@ -45,21 +45,6 @@ public class TurtorialBools : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("JumpOn"))
-        {
-            canJump = true;
-        }
-
-        if (other.CompareTag("DoubleJumpOn"))
-        {
-            canDoubleJump = true;
-        }
-
-        if (other.CompareTag("GrappleOn"))
-        {
-            canGrapple = true;
-            // Debug.Log(other.name + " triggered grapple"); // good debug log, to find name of object
-        }
 
         if (other.CompareTag("EndTurt"))
         {

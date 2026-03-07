@@ -22,6 +22,14 @@ public class SurroundingDetect : MonoBehaviour
     private int buildIndex;
     private int nextScene;
 
+    [Header("nulcoks")]
+    [SerializeField] private TextMeshProUGUI notificationText;
+    [SerializeField] private GameObject notificationVisible;
+    private float timer;
+    private float timerLenght = 2f;
+    private bool isTimerActive = false;
+
+
     private void Awake()
     {
         // Create a temporary reference to the current scene.
@@ -36,16 +44,13 @@ public class SurroundingDetect : MonoBehaviour
         {
             MakeTutorialBoolsTrue();
         }
-        
-        if (buildIndex == 1)
-        {
-            thirdPerson.canBeThirdperson = false;
-        }
     }
     void Start()
     {
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
         if (pressEText != null) pressEText.SetActive(false);
+
+        notificationVisible.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -61,10 +66,6 @@ public class SurroundingDetect : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("UnlockThirdPerson"))
-        {
-            thirdPerson.canBeThirdperson = true;
-        }
 
         if (other.CompareTag("TutorialEnd"))
         {
@@ -82,21 +83,8 @@ public class SurroundingDetect : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("LostJump"))
-        {
-            tutBools.canJump = false;
-        }
-
-        if (other.CompareTag("LostDoubleJump"))
-        {
-            tutBools.canDoubleJump = false;
-        }
-
-        if (other.CompareTag("LostGrapple"))
-        {
-            tutBools.canGrapple = false;
-        }
-
+        // ----- Unlocks/Losts ----- //
+        TextNotifications(other);
     }
 
     void OnTriggerExit(Collider other)
@@ -143,6 +131,18 @@ public class SurroundingDetect : MonoBehaviour
         {
             SceneManager.LoadScene(nextScene);
         }
+
+        if (isTimerActive == true)
+        {
+            notificationVisible.SetActive(true);
+
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
+            {
+                notificationVisible.SetActive(false);
+                isTimerActive = false;
+            }
+        }
     }
 
     void StartDialogue()
@@ -182,5 +182,89 @@ public class SurroundingDetect : MonoBehaviour
         tutBools.canDoubleJump = true;
         tutBools.canJump = true;
         tutBools.canGrapple = true;
+        thirdPerson.canBeThirdperson = true;
+    }
+
+    void TimerLogic()
+    {
+        timer = timerLenght;
+        isTimerActive = true;
+    }
+
+    void TextNotifications(Collider other)
+    {
+        // UNLOCK AND LOSE THIRD PERSON
+        if (other.CompareTag("UnlockThirdPerson") && thirdPerson.canBeThirdperson == false)
+        {
+            thirdPerson.canBeThirdperson = true;
+            notificationText.text = "Third Person Unlocked ";
+            TimerLogic();
+        }
+        else if (other.CompareTag("LostThirdPerson") && thirdPerson.canBeThirdperson == true)
+        {
+            thirdPerson.canBeThirdperson = false;
+            notificationText.text = "Third Person Disabled ";
+            TimerLogic();
+        }
+
+        // UNLOCK AND LOSE JUMP
+        if (other.CompareTag("JumpOn") && tutBools.canJump == false)
+        {
+            tutBools.canJump = true;
+            notificationText.text = "Gained Jump ";
+            TimerLogic();
+        }
+        else if (other.CompareTag("LostJump") && tutBools.canJump == true)
+        {
+            tutBools.canJump = false;
+            notificationText.text = "Jump Lost ";
+            TimerLogic();
+        }
+
+        // UNLOCK AND LOSE DOUBLE JUMP
+        if (other.CompareTag("DoubleJumpOn") && tutBools.canDoubleJump == false)
+        {
+            tutBools.canDoubleJump = true;
+            notificationText.text = "Gained Double Jump ";
+            TimerLogic();
+        }
+        else if (other.CompareTag("LostDoubleJump") && tutBools.canDoubleJump == true)
+        {
+            tutBools.canDoubleJump = false;
+            notificationText.text = "Double Jump Lost ";
+            TimerLogic();
+        }
+
+        // UNLOCK AND LOSE GRAPPLE
+        if (other.CompareTag("GrappleOn") && tutBools.canGrapple == false)
+        {
+            tutBools.canGrapple = true;
+            notificationText.text = "Gained Grappling ";
+            TimerLogic();
+
+            // Debug.Log(other.name + " triggered grapple"); // good debug log, to find name of object
+        }
+        else if (other.CompareTag("LostGrapple") && tutBools.canGrapple == true)
+        {
+            tutBools.canGrapple = false;
+            notificationText.text = "Lost Grappling ";
+            TimerLogic();
+        }
+
+        // UNLOCK AND LOSE ALL
+        if (other.CompareTag("LostAll"))
+        {
+            tutBools.canDoubleJump = false;
+            tutBools.canJump = false;
+            tutBools.canGrapple = false;
+            notificationText.text = "Lost All Mechanics ";
+            TimerLogic();
+        }
+        else if (other.CompareTag("GainAll"))
+        {
+            MakeTutorialBoolsTrue();
+            notificationText.text = "Gained All Mechs ";
+            TimerLogic();
+        }
     }
 }
