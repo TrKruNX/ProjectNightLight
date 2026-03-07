@@ -83,12 +83,12 @@ public class GrapplinghookScript : MonoBehaviour
 
         if (isGrappling == true)
         {
-            playerObj.position = Vector3.Slerp(playerObj.position, targetPos, 30f * Time.deltaTime);
+            playerObj.position = Vector3.MoveTowards(playerObj.position, targetPos, 120f * Time.deltaTime);
         }
 
         if (isObjGrapple == true)
         {
-            objToMe.position = Vector3.Slerp(objToMe.position, playerHand.position, 15f * Time.deltaTime);
+            objToMe.position = Vector3.MoveTowards(objToMe.position, playerHand.position, 60f * Time.deltaTime);
         }
 
         if (Input.GetMouseButtonUp(0))
