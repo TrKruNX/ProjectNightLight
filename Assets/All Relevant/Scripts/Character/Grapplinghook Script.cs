@@ -120,11 +120,11 @@ public class GrapplinghookScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, blockGrappleRaycast))
+        if (Physics.SphereCast(camHolder.position, 1f, camHolder.forward, out hit, 30f, blockGrappleRaycast))
         {
             int hitLayer = hit.collider.gameObject.layer;
-            
-            if (hitLayer == LayerMask.NameToLayer("GrappleToMeLayer"))
+
+            if (hitLayer == LayerMask.NameToLayer("GrappleToLayer"))
             {
                 targetPos = hit.point;
                 isGrappling = true;
@@ -132,8 +132,31 @@ public class GrapplinghookScript : MonoBehaviour
                 grapplesLeft--;
             }
 
+            Debug.Log("1" + hitLayer);
+
             // this makes it so, if it is a wall layer/defualt layer, tehn do nothing
             // or simpler, do something if it hits any of the grapple layers first
+        }
+        else
+        {
+            if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, blockGrappleRaycast))
+            {
+                int hitLayer = hit.collider.gameObject.layer;
+
+                if (hitLayer == LayerMask.NameToLayer("GrappleToLayer"))
+                {
+                    targetPos = hit.point;
+                    isGrappling = true;
+
+                    grapplesLeft--;
+                }
+
+                
+                Debug.Log("2" + hitLayer);
+
+                // this makes it so, if it is a wall layer/defualt layer, tehn do nothing
+                // or simpler, do something if it hits any of the grapple layers first
+            }
         }
 
         if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, blockGrappleRaycast))
