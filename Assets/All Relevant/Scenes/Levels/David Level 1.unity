@@ -8332,6 +8332,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1455839232703311944, guid: 8707440c96de4064fb88a4f779770502, type: 3}
   m_PrefabInstance: {fileID: 678557754}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &678557757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2528169088353578441, guid: 8707440c96de4064fb88a4f779770502, type: 3}
+  m_PrefabInstance: {fileID: 678557754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c45d5a375fa99f4fa7d3b2d662b9c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &682867285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4993895968780015604, guid: 9b0b0031e268bd14a968fd39edb36bd9, type: 3}
@@ -21187,6 +21198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a32e4d287d3b4542b7a270e6e88a56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grapplingScript: {fileID: 678557757}
 --- !u!1001 &1964379956
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BreakMe : MonoBehaviour
 {
+    [SerializeField] private GrapplinghookScript grapplingScript;
+
     // this script is for David Level 1, wher I want an object to be movable, but then fall through the map, and destroy
     // Simple to use, just drag script on the object that we can move, and then it works :]
 
@@ -15,6 +17,8 @@ public class BreakMe : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         thisCollider.isTrigger = false;
+
+        rb.isKinematic = true;
     }
 
     // Update
@@ -22,6 +26,7 @@ public class BreakMe : MonoBehaviour
     {
         if (thisCollider.enabled == false)
         {
+            rb.isKinematic = false;
             thisCollider.enabled = false;
             rb.useGravity = true;
             thisCollider.isTrigger = true;
@@ -29,6 +34,11 @@ public class BreakMe : MonoBehaviour
 
         if (transform.position.y < -20f)
         {
+            if (grapplingScript.isObjGrapple == true)
+            {
+                return;
+            }
+
             Destroy(gameObject);
         }
     }

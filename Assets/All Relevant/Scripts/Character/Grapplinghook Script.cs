@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrapplinghookScript : MonoBehaviour
@@ -6,11 +7,15 @@ public class GrapplinghookScript : MonoBehaviour
     [SerializeField] private PlayerMovementScript playerMove;
     [SerializeField] private TurtorialBools tutBools;
 
-    [SerializeField] private GameObject crossHairActive;
+    [Header("Ui Logic")]
+    public GameObject crossHair;
+    [SerializeField] private GameObject crossHairActive_Blue;
+    [SerializeField] private GameObject crossHairActive_Red;
 
     [Header("CamLocations")]
     public Transform firstPersonLoc;
     [SerializeField] private Transform camHolder;
+    [SerializeField] private float sphereCastRadius;
 
     public Transform playerObj;
     [SerializeField] private Transform playerHand;
@@ -19,6 +24,7 @@ public class GrapplinghookScript : MonoBehaviour
     public bool isAimGrappling;
     public bool isGrappling;
     public bool isObjGrapple;
+    public bool forceElse = false;
 
     private Vector3 targetPos;
     private Transform objToMe;
@@ -68,16 +74,30 @@ public class GrapplinghookScript : MonoBehaviour
 
             if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, raycastOptions))
             {
-                crossHairActive.SetActive(true);
+                int hitLayer = hit.collider.gameObject.layer;
+                
+                if (hitLayer == LayerMask.NameToLayer("GrappleToLayer"))
+                {
+                    crossHairActive_Blue.SetActive(true);
+                    
+                }
+
+                if (hitLayer == LayerMask.NameToLayer("GrappleObjToMe"))
+                {
+                    crossHairActive_Red.SetActive(true);
+                }
             }
             else
             {
-                crossHairActive.SetActive(false);
+                crossHairActive_Blue.SetActive(false);
+                crossHairActive_Red.SetActive(false);
+
             }
         }
         else
         {
-            crossHairActive.SetActive(false);
+            crossHairActive_Blue.SetActive(false);
+            crossHairActive_Red.SetActive(false);
         }
 
 
@@ -120,7 +140,7 @@ public class GrapplinghookScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.SphereCast(camHolder.position, 1f, camHolder.forward, out hit, 30f, blockGrappleRaycast))
+        if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, blockGrappleRaycast))
         {
             int hitLayer = hit.collider.gameObject.layer;
 
@@ -130,32 +150,6 @@ public class GrapplinghookScript : MonoBehaviour
                 isGrappling = true;
 
                 grapplesLeft--;
-            }
-
-            Debug.Log("1" + hitLayer);
-
-            // this makes it so, if it is a wall layer/defualt layer, tehn do nothing
-            // or simpler, do something if it hits any of the grapple layers first
-        }
-        else
-        {
-            if (Physics.Raycast(camHolder.position, camHolder.forward, out hit, 30f, blockGrappleRaycast))
-            {
-                int hitLayer = hit.collider.gameObject.layer;
-
-                if (hitLayer == LayerMask.NameToLayer("GrappleToLayer"))
-                {
-                    targetPos = hit.point;
-                    isGrappling = true;
-
-                    grapplesLeft--;
-                }
-
-                
-                Debug.Log("2" + hitLayer);
-
-                // this makes it so, if it is a wall layer/defualt layer, tehn do nothing
-                // or simpler, do something if it hits any of the grapple layers first
             }
         }
 
@@ -180,20 +174,38 @@ public class GrapplinghookScript : MonoBehaviour
             }
         }
 
-            /*
-             * this was a previous code that had a bug where I could go through walls, when grappling, or I could have a wall between
-             * me and object, and still grapple
-            if (Physics.SphereCast(camHolder.position, sphereRadius, camHolder.forward, out hit, 30f, grappleToMeLayer))
+        if (Physics.SphereCast(camHolder.position, sphereCastRadius, camHolder.forward, out hit, 30f, blockGrappleRaycast))
+        {
+            int hitLayer = hit.collider.gameObject.layer;
+
+            if (hitLayer == LayerMask.NameToLayer("Default"))
             {
-                targetPos = hit.collider.transform.position;
+                return;
+            }
+
+            if (hitLayer == LayerMask.NameToLayer("GrappleToLayer"))
+            {
+                targetPos = hit.point;
                 isGrappling = true;
 
                 grapplesLeft--;
-                crossHair.SetActive(true);
             }
 
-            if (Physics.SphereCast(camHolder.position, sphereRadius, camHolder.forward, out hit, 30f, grappleObjToMe))
+        }
+
+        if (Physics.SphereCast(camHolder.position, sphereCastRadius, camHolder.forward, out hit, 30f, blockGrappleRaycast))
+        {
+            int hitLayer = hit.collider.gameObject.layer;
+
+            if (hitLayer == LayerMask.NameToLayer("Default"))
             {
+                return;
+            }
+
+            if (hitLayer == LayerMask.NameToLayer("GrappleObjToMe") && isRayTime == false)
+            {
+                RayTimerOn();
+
                 objToMe = hit.collider.transform;
                 isObjGrapple = true;
 
@@ -203,11 +215,10 @@ public class GrapplinghookScript : MonoBehaviour
                 objRigidbody = objToMe.GetComponent<Rigidbody>();
                 objRigidbody.useGravity = false;
 
-                crossHair.SetActive(true);
+                grapplesLeft--;
             }
-            */
-
-            Debug.DrawRay(camHolder.position, camHolder.forward * 30f, Color.green);
+        }
+        Debug.DrawRay(camHolder.position, camHolder.forward * 30f, Color.green);
     }
 
     void RayTimerOn()
