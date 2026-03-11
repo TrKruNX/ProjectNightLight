@@ -1,5 +1,6 @@
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class GrapplinghookScript : MonoBehaviour
@@ -38,7 +39,10 @@ public class GrapplinghookScript : MonoBehaviour
     private Collider objCollider;
     private Rigidbody objRigidbody;
 
+    private bool throwObj = false;
+
     [SerializeField] private Collider playerCollider;
+    [SerializeField] private LayerMask targetLayerMask;
 
     // Update
     void Update()
@@ -108,10 +112,20 @@ public class GrapplinghookScript : MonoBehaviour
 
         if (isObjGrapple == true)
         {
+
             objToMe.position = Vector3.MoveTowards(objToMe.position, playerHand.position, 60f * Time.deltaTime);
+            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                objRigidbody.AddForce(camHolder.forward * 15f, ForceMode.Impulse);
+            }
+        }
+        else
+        {
+            Physics.IgnoreCollision(objCollider, playerCollider, false);
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) || isObjGrapple == true && Input.GetKeyDown(KeyCode.E))
         {
             if (isGrappling == true)
             {
@@ -136,6 +150,16 @@ public class GrapplinghookScript : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (objToMe && collision.gameObject.layer == 0)
+        {
+            objRigidbody.useGravity = false;
+            objRigidbody.isKinematic = true;
+        }
+    }
+
+
     public void RayCastGrapple()
     {
         RaycastHit hit;
@@ -159,13 +183,16 @@ public class GrapplinghookScript : MonoBehaviour
 
             if (hitLayer == LayerMask.NameToLayer("GrappleObjToMe") && isRayTime == false)
             {
+
+
                 RayTimerOn();
 
                 objToMe = hit.collider.transform;
                 isObjGrapple = true;
 
                 objCollider = objToMe.GetComponent<Collider>();
-                objCollider.enabled = false;
+                //objCollider.enabled = false;
+                Physics.IgnoreCollision(objCollider, playerCollider, true);
 
                 objRigidbody = objToMe.GetComponent<Rigidbody>();
                 objRigidbody.useGravity = false;
@@ -210,7 +237,8 @@ public class GrapplinghookScript : MonoBehaviour
                 isObjGrapple = true;
 
                 objCollider = objToMe.GetComponent<Collider>();
-                objCollider.enabled = false;
+                //objCollider.enabled = false;
+                Physics.IgnoreCollision(objCollider, playerCollider, true);
 
                 objRigidbody = objToMe.GetComponent<Rigidbody>();
                 objRigidbody.useGravity = false;

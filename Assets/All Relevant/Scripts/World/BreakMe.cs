@@ -17,8 +17,6 @@ public class BreakMe : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         thisCollider.isTrigger = false;
-
-        rb.isKinematic = true;
     }
 
     // Update
