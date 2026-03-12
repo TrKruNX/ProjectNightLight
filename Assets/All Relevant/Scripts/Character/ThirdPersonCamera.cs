@@ -9,9 +9,6 @@ public class ThirdPersonCamera : MonoBehaviour
     [Header("Player Logic")]
     [SerializeField] private Transform playerObj;
 
-    [Header("Ui Logic")]
-    [SerializeField] private GameObject crossHair;
-
     [Header("camLogic")]
     [SerializeField] private float mouseSensitivity = 200f;
     [SerializeField] private float distance = 10f;
@@ -60,12 +57,12 @@ public class ThirdPersonCamera : MonoBehaviour
         if (grapplingScript.isAimGrappling == false && grapplingScript.isGrappling == false && grapplingScript.isObjGrapple == false && canBeThirdperson == true)
         {
             ThirdPersonLogic();
-            crossHair.SetActive(false);
+            grapplingScript.crossHair.SetActive(false);
         }
         else
         {
             FirstPersonLogic();
-            crossHair.SetActive(true);
+            grapplingScript.crossHair.SetActive(true);
         }
     }
 
