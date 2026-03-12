@@ -112,18 +112,12 @@ public class GrapplinghookScript : MonoBehaviour
 
         if (isObjGrapple == true)
         {
-
             objToMe.position = Vector3.MoveTowards(objToMe.position, playerHand.position, 60f * Time.deltaTime);
             
             if (Input.GetKeyDown(KeyCode.E))
             {
                 objRigidbody.AddForce(camHolder.forward * 15f, ForceMode.Impulse);
             }
-        }
-        else
-        {
-            objCollider.enabled = true;
-            //Physics.IgnoreCollision(objCollider, playerCollider, false);
         }
 
         if (Input.GetMouseButtonUp(0) || isObjGrapple == true && Input.GetKeyDown(KeyCode.E))
