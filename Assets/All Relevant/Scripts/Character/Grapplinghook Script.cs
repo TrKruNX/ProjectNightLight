@@ -122,7 +122,8 @@ public class GrapplinghookScript : MonoBehaviour
         }
         else
         {
-            Physics.IgnoreCollision(objCollider, playerCollider, false);
+            objCollider.enabled = true;
+            //Physics.IgnoreCollision(objCollider, playerCollider, false);
         }
 
         if (Input.GetMouseButtonUp(0) || isObjGrapple == true && Input.GetKeyDown(KeyCode.E))
@@ -191,8 +192,8 @@ public class GrapplinghookScript : MonoBehaviour
                 isObjGrapple = true;
 
                 objCollider = objToMe.GetComponent<Collider>();
-                //objCollider.enabled = false;
-                Physics.IgnoreCollision(objCollider, playerCollider, true);
+                objCollider.enabled = false;
+                //Physics.IgnoreCollision(objCollider, playerCollider, true);
 
                 objRigidbody = objToMe.GetComponent<Rigidbody>();
                 objRigidbody.useGravity = false;
@@ -237,8 +238,8 @@ public class GrapplinghookScript : MonoBehaviour
                 isObjGrapple = true;
 
                 objCollider = objToMe.GetComponent<Collider>();
-                //objCollider.enabled = false;
-                Physics.IgnoreCollision(objCollider, playerCollider, true);
+                objCollider.enabled = false;
+                //Physics.IgnoreCollision(objCollider, playerCollider, true);
 
                 objRigidbody = objToMe.GetComponent<Rigidbody>();
                 objRigidbody.useGravity = false;
