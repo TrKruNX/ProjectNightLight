@@ -33,7 +33,7 @@ public class GrapplinghookScript : MonoBehaviour
     [SerializeField] private LayerMask raycastOptions;
 
     public float timer;
-    private float raycastTimer = 0.4f;
+    private float raycastTimer = 1f;
     private bool isRayTime = false;
 
     private Collider objCollider;
