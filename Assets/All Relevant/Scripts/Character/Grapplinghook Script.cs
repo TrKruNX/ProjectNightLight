@@ -192,7 +192,7 @@ public class GrapplinghookScript : MonoBehaviour
 
                 objCollider = objToMe.GetComponent<Collider>();
                 //objCollider.enabled = false;
-                //Physics.IgnoreCollision(objCollider, playerCollider, true);
+                Physics.IgnoreCollision(objCollider, playerCollider, true);
 
                 objRigidbody = objToMe.GetComponent<Rigidbody>();
                 objRigidbody.useGravity = false;
@@ -238,7 +238,7 @@ public class GrapplinghookScript : MonoBehaviour
 
                 objCollider = objToMe.GetComponent<Collider>();
                 //objCollider.enabled = false;
-                //Physics.IgnoreCollision(objCollider, playerCollider, true);
+                Physics.IgnoreCollision(objCollider, playerCollider, true);
 
                 objRigidbody = objToMe.GetComponent<Rigidbody>();
                 objRigidbody.useGravity = false;
