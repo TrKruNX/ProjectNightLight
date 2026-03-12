@@ -122,7 +122,7 @@ public class GrapplinghookScript : MonoBehaviour
         }
         else
         {
-            Physics.IgnoreCollision(objCollider, playerCollider, false);
+            //Physics.IgnoreCollision(objCollider, playerCollider, false);
         }
 
         if (Input.GetMouseButtonUp(0) || isObjGrapple == true && Input.GetKeyDown(KeyCode.E))
