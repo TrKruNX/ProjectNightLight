@@ -295,6 +295,8 @@ MonoBehaviour:
   mainCamera: {fileID: 5544424350267409417}
   minY: -20
   maxY: 65
+  playerCollider: {fileID: 1938947300407320944}
+  camDist: 10
   canBeThirdperson: 1
 --- !u!114 &2528169088353578441
 MonoBehaviour:
@@ -310,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMove: {fileID: 443583196591342089}
   tutBools: {fileID: 8289935218093672483}
+  thirdPersonScript: {fileID: 5737792625945922048}
   crossHair: {fileID: 6186683324490795352}
   crossHairActive_Blue: {fileID: 7954871177642615787}
   crossHairActive_Red: {fileID: 8521261869052365945}
