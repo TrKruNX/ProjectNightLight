@@ -6559,6 +6559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502434746}
   serializedVersion: 2
+<<<<<<< HEAD
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 19.97, y: 189.1, z: -0.16}
   m_LocalScale: {x: 3.0845315, y: 1, z: 5.481073}
@@ -6856,7 +6857,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539526394}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 =======
   m_Modification:
     serializedVersion: 3
@@ -6912,8 +6912,6 @@ MeshFilter:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b0b0031e268bd14a968fd39edb36bd9, type: 3}
 >>>>>>> 1cc79d57bcb6bd193744f0d03526a960c6c2c4e0
-=======
->>>>>>> parent of da8799a (gg)
 --- !u!1 &1566813454
 GameObject:
   m_ObjectHideFlags: 0
@@ -8427,9 +8425,6 @@ SceneRoots:
   - {fileID: 1732055671}
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of da8799a (gg)
   - {fileID: 2060681094}
   - {fileID: 1660419990}
   - {fileID: 2038457167}
@@ -8437,7 +8432,6 @@ SceneRoots:
   - {fileID: 243473374}
   - {fileID: 627126134}
   - {fileID: 318976176}
-<<<<<<< HEAD
 =======
 =======
   - {fileID: 2060681094}
@@ -8456,5 +8450,3 @@ SceneRoots:
 >>>>>>> 1cc79d57bcb6bd193744f0d03526a960c6c2c4e0
 =======
 >>>>>>> a17734f3f184f9f92f06d26ca33aeb67378b2acd
-=======
->>>>>>> parent of da8799a (gg)
