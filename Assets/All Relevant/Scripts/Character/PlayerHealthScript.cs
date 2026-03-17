@@ -66,7 +66,7 @@ public class PlayerHealthScript : MonoBehaviour
     {
         if (currentPlayerHealth > 0f)
             return;
-        
+
         playerObj.GetComponent<CharacterController>().enabled = false;
 
         playerObj.position = checkpointPos;
