@@ -1,12 +1,12 @@
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class GrapplinghookScript : MonoBehaviour
 {
     [SerializeField] private PlayerMovementScript playerMove;
     [SerializeField] private TurtorialBools tutBools;
-    [SerializeField] private ThirdPersonCamera thirdPersonScript;
 
     [Header("Ui Logic")]
     public GameObject crossHair;
@@ -61,11 +61,7 @@ public class GrapplinghookScript : MonoBehaviour
 
     private void GrappleLogic()
     {
-        if (isAimGrappling == true)
-        {
-            thirdPersonScript.camDist = 0f;
-        }
-        
+
 
         if (Input.GetMouseButtonDown(1) && isAimGrappling == false && tutBools.canGrapple == true)
         {
@@ -211,7 +207,7 @@ public class GrapplinghookScript : MonoBehaviour
 
             if (hitLayer == LayerMask.NameToLayer("GrappleToLayer"))
             {
-                targetPos = hit.transform.position;
+                targetPos = hit.point;
                 isGrappling = true;
 
                 grapplesLeft--;
