@@ -191,7 +191,6 @@ public class SurroundingDetect : MonoBehaviour
         isTimerActive = true;
     }
 
-
     void TextNotifications(Collider other)
     {
         // UNLOCK AND LOSE THIRD PERSON
