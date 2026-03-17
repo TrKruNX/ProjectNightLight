@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (11)
@@ -236,7 +236,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (8)
@@ -4689,7 +4689,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes
@@ -7634,7 +7634,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (12)
@@ -8435,8 +8435,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eff6e70861802d04781662db592396bd, type: 3}
---- !u!114 &404113521 stripped
+--- !u!114 &404113521
 MonoBehaviour:
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 5737792625945922048, guid: 8707440c96de4064fb88a4f779770502, type: 3}
   m_PrefabInstance: {fileID: 678557754}
   m_PrefabAsset: {fileID: 0}
@@ -8446,11 +8447,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3887559b99148f458f6b7fcc7c2c340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &405533017 stripped
+  grapplingScript: {fileID: 0}
+  playerObj: {fileID: 0}
+  mouseSensitivity: 200
+  distance: 10
+  defaultLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  mainCamera: {fileID: 0}
+  minY: -20
+  maxY: 65
+  canBeThirdperson: 1
+--- !u!4 &405533017
 Transform:
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 6018980545041401203, guid: 8707440c96de4064fb88a4f779770502, type: 3}
   m_PrefabInstance: {fileID: 678557754}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &415663946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10139,24 +10161,116 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8707440c96de4064fb88a4f779770502, type: 3}
---- !u!114 &678557755 stripped
+--- !u!114 &678557755
 MonoBehaviour:
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 8158062655301005952, guid: 8707440c96de4064fb88a4f779770502, type: 3}
   m_PrefabInstance: {fileID: 678557754}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &678557756 stripped
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: -99
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 0
+  m_fontSizeMax: 0
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 00000000
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &678557756
 GameObject:
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 1455839232703311944, guid: 8707440c96de4064fb88a4f779770502, type: 3}
   m_PrefabInstance: {fileID: 678557754}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &678557757 stripped
+  serializedVersion: 6
+  m_Component: []
+  m_Layer: 0
+  m_Name: Placeholder for referenced GameObject in Prefab instance (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &678557757
 MonoBehaviour:
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 2528169088353578441, guid: 8707440c96de4064fb88a4f779770502, type: 3}
   m_PrefabInstance: {fileID: 678557754}
   m_PrefabAsset: {fileID: 0}
@@ -10166,6 +10280,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c45d5a375fa99f4fa7d3b2d662b9c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMove: {fileID: 0}
+  tutBools: {fileID: 0}
+  crossHair: {fileID: 0}
+  crossHairActive_Blue: {fileID: 0}
+  crossHairActive_Red: {fileID: 0}
+  firstPersonLoc: {fileID: 0}
+  camHolder: {fileID: 0}
+  sphereCastRadius: 0
+  playerObj: {fileID: 0}
+  playerHand: {fileID: 0}
+  grapplesLeft: 1
+  isAimGrappling: 0
+  isGrappling: 0
+  isObjGrapple: 0
+  forceElse: 0
+  blockGrappleRaycast:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastOptions:
+    serializedVersion: 2
+    m_Bits: 0
+  timer: 0
+  playerCollider: {fileID: 0}
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!222 &678557758
+CanvasRenderer:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_CullTransparentMesh: 1
 --- !u!43 &725177733
 Mesh:
   m_ObjectHideFlags: 0
@@ -11386,7 +11534,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (2)
@@ -11886,7 +12034,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (6)
@@ -11952,7 +12100,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (9)
@@ -15858,7 +16006,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (5)
@@ -16584,8 +16732,9 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1154424318 stripped
+--- !u!114 &1154424318
 MonoBehaviour:
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 8299222866624482445, guid: 8707440c96de4064fb88a4f779770502, type: 3}
   m_PrefabInstance: {fileID: 678557754}
   m_PrefabAsset: {fileID: 0}
@@ -16595,6 +16744,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd2dc60916005743a6b4cada8d638ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turtBools: {fileID: 0}
+  playerObj: {fileID: 0}
+  currentPlayerHealth: 0
+  maxPlayerhealth: 13
+  checkpointPos: {x: 0, y: 0, z: 0}
+  slider: {fileID: 0}
 --- !u!1001 &1172324605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23885,7 +24040,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (1)
@@ -25475,7 +25630,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (3)
@@ -26983,7 +27138,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (10)
@@ -27401,7 +27556,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-      objectReference: {fileID: 1154424318}
+      objectReference: {fileID: 0}
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (4)
@@ -27443,7 +27598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a32e4d287d3b4542b7a270e6e88a56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grapplingScript: {fileID: 678557757}
+  grapplingScript: {fileID: 0}
 --- !u!1001 &1964379956
 PrefabInstance:
   m_ObjectHideFlags: 0
