@@ -170,11 +170,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (11)
@@ -207,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2855076515966885306, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 70.85
+      value: 70.83593
       objectReference: {fileID: 0}
     - target: {fileID: 2855076515966885306, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -240,11 +236,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (8)
@@ -4697,11 +4689,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes
@@ -6525,85 +6513,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2368009462844374176, guid: 23c5873569cf300479aa616fa770378d, type: 3}
   m_PrefabInstance: {fileID: 248424314}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
---- !u!1001 &262017926
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 133.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -14.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2293989709671117382, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3392654193399759476, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_Name
-      value: Third Person Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8954339715443544515, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8954339715443544515, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
---- !u!114 &262017927 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7381178076617671903, guid: 6864e8afa7edab542941e60bfc234664, type: 3}
-  m_PrefabInstance: {fileID: 262017926}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd2dc60916005743a6b4cada8d638ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> parent of 6285ff2 (gg)
 --- !u!1 &273802839
 GameObject:
   m_ObjectHideFlags: 0
@@ -7725,11 +7634,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (12)
@@ -11481,11 +11386,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (2)
@@ -11985,11 +11886,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (6)
@@ -12055,11 +11952,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (9)
@@ -15965,11 +15858,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (5)
@@ -23996,11 +23885,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (1)
@@ -25590,11 +25475,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (3)
@@ -27102,11 +26983,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (10)
@@ -27524,11 +27401,7 @@ PrefabInstance:
     - target: {fileID: 4364255972689451143, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: playerHealthScript
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1154424318}
-=======
-      objectReference: {fileID: 262017927}
->>>>>>> parent of 6285ff2 (gg)
     - target: {fileID: 5663520421936730984, guid: 6f46e8ecb5684b04bb2e7362423e16e2, type: 3}
       propertyPath: m_Name
       value: EnemySpikes (4)
