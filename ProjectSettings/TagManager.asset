@@ -25,6 +25,7 @@ TagManager:
   - LostThirdPerson
   - LostAll
   - GainAll
+  - AngelCollider
   layers:
   - Default
   - TransparentFX
