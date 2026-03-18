@@ -40,7 +40,7 @@ public class SurroundingDetect : MonoBehaviour
         nextScene = currentScene.buildIndex + 1;
 
 
-        if (buildIndex != 0)
+        if (buildIndex != 1)
         {
             MakeTutorialBoolsTrue();
         }

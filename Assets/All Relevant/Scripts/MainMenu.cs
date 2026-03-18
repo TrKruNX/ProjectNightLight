@@ -4,6 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.visible = true; //obvi
+        Cursor.lockState = CursorLockMode.Confined; //cursor only moves within game window
+    }
 
     public void LoadGame()
     {

@@ -33,6 +33,9 @@ public class PlayerMovementScript : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible= false;
+        Time.timeScale = 1f;
 }
 
     // Update

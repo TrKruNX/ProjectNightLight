@@ -27328,21 +27328,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1244037139}
     m_Modifications:
+    - target: {fileID: -4404227804512256752, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 430617057040934270, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_Name
       value: Checkpoint1 (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2780321299520642551, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.050003
+      value: -39.1
       objectReference: {fileID: 0}
     - target: {fileID: 2780321299520642551, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.73
+      value: -19.02
       objectReference: {fileID: 0}
     - target: {fileID: 2780321299520642551, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7199993
+      value: -0.59
       objectReference: {fileID: 0}
     - target: {fileID: 2780321299520642551, guid: a522ea0839f3a7340b64a9495f92bec1, type: 3}
       propertyPath: m_LocalRotation.w
