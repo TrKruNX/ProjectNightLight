@@ -53,6 +53,7 @@ public class SurroundingDetect : MonoBehaviour
         notificationVisible.SetActive(false);
     }
 
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Npcs Talk"))
