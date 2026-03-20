@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/All Relevant/Scenes/Noah.unity
     guid: 12a082dbb828d1b48be091151881630b
   - enabled: 1
+    path: Assets/All Relevant/Scenes/Level 2 - Noah.unity
+    guid: 2fc83cb657dcfc74e9fee0eb910418ea
+  - enabled: 1
     path: Assets/All Relevant/Scenes/Levels/True Levels/Level 3 - David.unity
     guid: 2c513c738d1475b4ca34a97b61fe9def
   m_configObjects:
