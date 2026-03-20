@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/All Relevant/Scenes/Levels/David Level 1.unity
     guid: b57c4683f7860544ba665caa6ebf6c91
   - enabled: 1
+    path: Assets/All Relevant/Scenes/Levels/True Levels/Level 3 - David.unity
+    guid: 2c513c738d1475b4ca34a97b61fe9def
+  - enabled: 1
     path: Assets/All Relevant/Scenes/Marius.unity
     guid: 702a269d5f9d060458b73286e7fa5287
   - enabled: 1
