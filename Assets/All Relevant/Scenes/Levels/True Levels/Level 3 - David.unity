@@ -22767,17 +22767,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2003771296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1609215382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5449948968416268090, guid: 1724b5cdf1a6d3541b78fc3a823fe6a6, type: 3}
+  m_PrefabInstance: {fileID: 2097577427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1609215383 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4163851939142109372, guid: 1724b5cdf1a6d3541b78fc3a823fe6a6, type: 3}
   m_PrefabInstance: {fileID: 2097577427}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1609215382}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c45d5a375fa99f4fa7d3b2d662b9c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1609215386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609215382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc09ad04c94268498182f96fc763045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossFightScript: {fileID: 345016239}
+  finalObject: {fileID: 475673989}
 --- !u!1 &1611050944
 GameObject:
   m_ObjectHideFlags: 0
@@ -65602,6 +65621,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5449948968416268090, guid: 1724b5cdf1a6d3541b78fc3a823fe6a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1609215386}
     - targetCorrespondingSourceObject: {fileID: 3604066690658000129, guid: 1724b5cdf1a6d3541b78fc3a823fe6a6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1799954177}
