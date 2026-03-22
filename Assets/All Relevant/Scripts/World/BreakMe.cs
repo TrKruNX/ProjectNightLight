@@ -3,6 +3,7 @@ using UnityEngine;
 public class BreakMe : MonoBehaviour
 {
     [SerializeField] private GrapplinghookScript grapplingScript;
+    [SerializeField] private BossFightScript bossFightScript;
 
     // this script is for David Level 1, wher I want an object to be movable, but then fall through the map, and destroy
     // Simple to use, just drag script on the object that we can move, and then it works :]
@@ -37,7 +38,10 @@ public class BreakMe : MonoBehaviour
                 return;
             }
 
+            bossFightScript.boxesDestroyedBoss++;
             Destroy(gameObject);
         }
     }
+
+
 }

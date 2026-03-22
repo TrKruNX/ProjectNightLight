@@ -7,6 +7,7 @@ public class ThirdPersonCamera : MonoBehaviour
 {
     [Header("Scripts")]
     [SerializeField] private GrapplinghookScript grapplingScript;
+    [SerializeField] private BossFightScript bossFightScript;
 
     [Header("Player Logic")]
     [SerializeField] private Transform playerObj;
@@ -22,6 +23,8 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private float maxY = 65f;  // highest camera angle
 
     [SerializeField] private Collider playerCollider;
+
+    [SerializeField] private GameObject finalObject;
 
 
     public float camDist = 10f;
@@ -59,6 +62,11 @@ public class ThirdPersonCamera : MonoBehaviour
         if (grapplingScript.isAimGrappling && Input.GetMouseButtonDown(0))
         {
             grapplingScript.RayCastGrapple();
+        }
+
+        if (bossFightScript.bossDead == true)
+        {
+            transform.LookAt(finalObject.transform.position);
         }
     }
 

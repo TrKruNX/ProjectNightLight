@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
+    [SerializeField] private BossFightScript bossFightScript;
+
     [SerializeField] private GameObject targetPos;
+    [SerializeField] private GameObject targetPos2;
     public Transform playerObj;
     [SerializeField] private GameObject invWalls;
     [SerializeField] private GameObject fakeEnemy;
+    [SerializeField] private GameObject bossFightBlocks;
 
     public bool moveToMe;
+    public bool moveToMe2;
     public bool canNotMoveAgain;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,6 +20,7 @@ public class MovePlayer : MonoBehaviour
     {
         canNotMoveAgain = false;
         moveToMe = false;
+        moveToMe2 = false;
     }
 
     // Update is called once per frame
@@ -23,6 +29,11 @@ public class MovePlayer : MonoBehaviour
         if (moveToMe == true)
         {
             playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos.transform.position, 4500f * Time.deltaTime);
+        }
+        
+        if (moveToMe2 == true)
+        {
+            playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos2.transform.position, 4500f * Time.deltaTime);
         }
 
         if (canNotMoveAgain == true)
@@ -34,16 +45,31 @@ public class MovePlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("AngelCollider") && canNotMoveAgain == false)
+        if (other.CompareTag("AngelCollider"))
         {
-            moveToMe = true;
-            canNotMoveAgain = true;
-            Debug.Log("whynotwork");
+            if (canNotMoveAgain == false)
+            {
+                moveToMe = true;
+                canNotMoveAgain = true;
+                Debug.Log("whynotwork");
+            }
+            else
+            {
+                moveToMe2 = true;
+                bossFightBlocks.SetActive(true);
+            }
+
         }
 
         if (other.CompareTag("targetPosLvl3"))
         {
             moveToMe = false;
+
+            if (moveToMe2 == true)
+            {
+                moveToMe2 = false;
+                bossFightScript.bossOngoing = true;
+            }
         }
     }
 }
