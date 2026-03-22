@@ -4,6 +4,8 @@ public class MovePlayer : MonoBehaviour
 {
     [SerializeField] private GameObject targetPos;
     public Transform playerObj;
+    [SerializeField] private GameObject invWalls;
+    [SerializeField] private GameObject fakeEnemy;
 
     public bool moveToMe;
     public bool canNotMoveAgain;
@@ -21,6 +23,12 @@ public class MovePlayer : MonoBehaviour
         if (moveToMe == true)
         {
             playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos.transform.position, 4500f * Time.deltaTime);
+        }
+
+        if (canNotMoveAgain == true)
+        {
+            invWalls.SetActive(false);
+            fakeEnemy.SetActive(false);
         }
     }
 
