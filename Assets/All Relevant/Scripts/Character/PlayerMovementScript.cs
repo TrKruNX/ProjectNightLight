@@ -8,6 +8,7 @@ public class PlayerMovementScript : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private GrapplinghookScript grapplingScript;
     [SerializeField] private PlayerHealthScript playerHealthScript;
+    [SerializeField] private MovePlayer movePlayer;
     [SerializeField] private TurtorialBools tutBools;
 
     [SerializeField] private GameObject playerObj;
@@ -110,6 +111,11 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void GravityOfPlayer()
     {
+        if (movePlayer.moveToMe == true)
+        {
+            return;
+        }
+
 
         if (characterController.isGrounded == true && !isJumping && !grapplingScript.isGrappling)
         {

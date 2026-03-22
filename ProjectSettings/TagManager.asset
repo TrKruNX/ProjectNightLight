@@ -26,6 +26,7 @@ TagManager:
   - LostAll
   - GainAll
   - AngelCollider
+  - targetPosLvl3
   layers:
   - Default
   - TransparentFX

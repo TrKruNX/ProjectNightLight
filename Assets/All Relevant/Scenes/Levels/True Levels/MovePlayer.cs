@@ -20,7 +20,7 @@ public class MovePlayer : MonoBehaviour
     {
         if (moveToMe == true)
         {
-            playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos.transform.position, 100f * Time.deltaTime);
+            playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos.transform.position, 2500f * Time.deltaTime);
         }
     }
 
@@ -31,6 +31,11 @@ public class MovePlayer : MonoBehaviour
             moveToMe = true;
             canNotMoveAgain = true;
             Debug.Log("whynotwork");
+        }
+
+        if (other.CompareTag("targetPosLvl3"))
+        {
+            moveToMe = false;
         }
     }
 }
