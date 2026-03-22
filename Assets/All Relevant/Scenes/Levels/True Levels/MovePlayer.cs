@@ -20,7 +20,7 @@ public class MovePlayer : MonoBehaviour
     {
         if (moveToMe == true)
         {
-            playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos.transform.position, 2500f * Time.deltaTime);
+            playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos.transform.position, 4500f * Time.deltaTime);
         }
     }
 
