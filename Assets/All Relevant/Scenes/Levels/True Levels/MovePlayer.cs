@@ -3,6 +3,7 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     [SerializeField] private BossFightScript bossFightScript;
+    [SerializeField] private PlayerMovementScript playerMoveScript;
 
     [SerializeField] private GameObject targetPos;
     [SerializeField] private GameObject targetPos2;
@@ -11,7 +12,7 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] private GameObject fakeEnemy;
     [SerializeField] private GameObject bossFightBlocks;
 
-    public bool moveToMe;
+    
     public bool moveToMe2;
     public bool canNotMoveAgain;
 
@@ -19,14 +20,14 @@ public class MovePlayer : MonoBehaviour
     void Start()
     {
         canNotMoveAgain = false;
-        moveToMe = false;
+        playerMoveScript.moveToMe = false;
         moveToMe2 = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (moveToMe == true)
+        if (playerMoveScript.moveToMe == true)
         {
             playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos.transform.position, 4500f * Time.deltaTime);
         }
@@ -49,7 +50,7 @@ public class MovePlayer : MonoBehaviour
         {
             if (canNotMoveAgain == false)
             {
-                moveToMe = true;
+                playerMoveScript.moveToMe = true;
                 canNotMoveAgain = true;
                 Debug.Log("whynotwork");
             }
@@ -63,7 +64,7 @@ public class MovePlayer : MonoBehaviour
 
         if (other.CompareTag("targetPosLvl3"))
         {
-            moveToMe = false;
+            playerMoveScript.moveToMe = false;
 
             if (moveToMe2 == true)
             {

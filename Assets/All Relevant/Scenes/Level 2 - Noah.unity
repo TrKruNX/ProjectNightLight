@@ -6212,6 +6212,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Level3Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5615577614230644351, guid: 1724b5cdf1a6d3541b78fc3a823fe6a6, type: 3}
+      propertyPath: movePlayer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6318564963491859897, guid: 1724b5cdf1a6d3541b78fc3a823fe6a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

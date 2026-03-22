@@ -24018,13 +24018,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossFightScript: {fileID: 345016239}
+  playerMoveScript: {fileID: 2097577429}
   targetPos: {fileID: 227757088}
   targetPos2: {fileID: 1791962681}
   playerObj: {fileID: 1799954176}
   invWalls: {fileID: 2003771295}
   fakeEnemy: {fileID: 1475055946}
   bossFightBlocks: {fileID: 340714359}
-  moveToMe: 0
   moveToMe2: 0
   canNotMoveAgain: 0
 --- !u!43 &1809473540
@@ -65633,6 +65633,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4922520814872470409, guid: 1724b5cdf1a6d3541b78fc3a823fe6a6, type: 3}
   m_PrefabInstance: {fileID: 2097577427}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2097577429 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5615577614230644351, guid: 1724b5cdf1a6d3541b78fc3a823fe6a6, type: 3}
+  m_PrefabInstance: {fileID: 2097577427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799954167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a7cc6a216bb314c89084a324978d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &2125020483
 Mesh:
   m_ObjectHideFlags: 0
