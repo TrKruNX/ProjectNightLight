@@ -19371,7 +19371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2536884901098920724, guid: eff6e70861802d04781662db592396bd, type: 3}
       propertyPath: 'dialogueLines.Array.data[1]'
-      value: WIN AND THE WORLD WILL BE FFIXED
+      value: WIN AND THE WORLD WILL BE FIXED
       objectReference: {fileID: 0}
     - target: {fileID: 4905848781561693886, guid: eff6e70861802d04781662db592396bd, type: 3}
       propertyPath: m_Name
