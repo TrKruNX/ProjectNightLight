@@ -11,9 +11,8 @@ public class BossFightScript : MonoBehaviour
     public bool bossOngoing;
     public bool bossDead;
 
-    private bool bossStart2;
-    private float timer = 5f;
-    private float bossTimer;
+    private bool tutorialStarted;
+    private float tutorialTimer = 5f;
     [SerializeField] private GameObject bossTutText;
 
     public int boxesDestroyedBoss;
@@ -23,85 +22,72 @@ public class BossFightScript : MonoBehaviour
     public AudioSource boss3Box;
     public AudioSource boss8Box;
     public AudioSource bossDeath;
-    public AudioSource level3Start;
 
+    private bool bossStartPlayed;
+    private bool boss3BoxPlayed;
+    private bool boss8BoxPlayed;
+    private bool bossDeathPlayed;
 
-
-    private void Start()
+    private void Update()
     {
-        bossOngoing = false;
-        bossStart2 = false;
-    }
+        if (!bossOngoing) return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (bossOngoing)
+        // --- Start boss fight sound & tutorial text once ---
+        if (!bossStartPlayed)
         {
+            bossStart?.Play();
+            bossStartPlayed = true;
 
-            if (bossStart != null)
-            {
-                bossStart.Play();
-            }
-
-            if (boxesDestroyedBoss == 0)
-            {
-                Stage1.SetActive(true);
-                TimerTwo();
-            }
-
-
-            if (boxesDestroyedBoss == 3)
-            {
-                if (boss3Box != null)
-                {
-                    boss3Box.Play();
-                }
-
-                Stage2.SetActive(true);
-                Stage1.SetActive(false);
-            }
-
-            if (boxesDestroyedBoss == 8)
-            {
-                if (boss8Box != null)
-                {
-                    boss8Box.Play();
-                }
-
-                Stage3.SetActive(true);
-                Stage2.SetActive(false);
-            }
-            
-            if (boxesDestroyedBoss == 13)
-            {
-                Stage3.SetActive(false);
-                bossDead = true;
-
-                if (bossDeath != null)
-                {
-                    bossDeath.Play();
-                }
-            }
-
-            if (bossStart2 == true)
-            {
-                bossTutText.SetActive(true);
-                bossTimer -= Time.deltaTime;
-
-                if (bossTimer <= 0f)
-                {
-                    bossTutText.SetActive(false);
-                    bossStart2 = false;
-                }
-            }
-
+            bossTutText.SetActive(true);
+            tutorialStarted = true;
+            tutorialTimer = 5f;
         }
-    }
 
-    void TimerTwo()
-    {
-        bossStart2 = true;
-        bossTimer = timer;
+        // --- Tutorial countdown ---
+        if (tutorialStarted)
+        {
+            tutorialTimer -= Time.deltaTime;
+            if (tutorialTimer <= 0f)
+            {
+                bossTutText.SetActive(false);
+                tutorialStarted = false;
+            }
+        }
+
+        // --- Stage activation ---
+        if (boxesDestroyedBoss == 0)
+        {
+            Stage1.SetActive(true);
+        }
+        else if (boxesDestroyedBoss == 3)
+        {
+            Stage2.SetActive(true);
+            Stage1.SetActive(false);
+            if (!boss3BoxPlayed)
+            {
+                boss3Box?.Play();
+                boss3BoxPlayed = true;
+            }
+        }
+        else if (boxesDestroyedBoss == 8)
+        {
+            Stage3.SetActive(true);
+            Stage2.SetActive(false);
+            if (!boss8BoxPlayed)
+            {
+                boss8Box?.Play();
+                boss8BoxPlayed = true;
+            }
+        }
+        else if (boxesDestroyedBoss == 13)
+        {
+            Stage3.SetActive(false);
+            bossDead = true;
+            if (!bossDeathPlayed)
+            {
+                bossDeath?.Play();
+                bossDeathPlayed = true;
+            }
+        }
     }
 }

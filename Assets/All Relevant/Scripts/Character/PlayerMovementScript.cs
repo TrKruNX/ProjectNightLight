@@ -9,6 +9,7 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private GrapplinghookScript grapplingScript;
     [SerializeField] private PlayerHealthScript playerHealthScript;
     [SerializeField] private TurtorialBools tutBools;
+    [SerializeField] private MovePlayer movePlayer;
 
     [SerializeField] private GameObject playerObj;
 
@@ -23,7 +24,6 @@ public class PlayerMovementScript : MonoBehaviour
     private int maxJumpsLeft = 2;
 
     private bool isGrappleMove = false;
-    public bool moveToMe;
 
     private Vector3 move;
     private Vector3 verticalVelocity;
@@ -111,7 +111,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void GravityOfPlayer()
     {
-        if (moveToMe == true)
+        if (movePlayer.moveToMe == true && movePlayer != null)
         {
             return;
         }

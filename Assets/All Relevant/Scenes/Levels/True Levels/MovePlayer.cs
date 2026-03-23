@@ -3,7 +3,6 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     [SerializeField] private BossFightScript bossFightScript;
-    [SerializeField] private PlayerMovementScript playerMoveScript;
 
     [SerializeField] private GameObject targetPos;
     [SerializeField] private GameObject targetPos2;
@@ -14,28 +13,35 @@ public class MovePlayer : MonoBehaviour
 
     public AudioSource bossPush;
 
+    public bool moveToMe;
     public bool moveToMe2;
     public bool canNotMoveAgain;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private CharacterController controller;
+
+    // Start
     void Start()
     {
+        controller = playerObj.GetComponent<CharacterController>();
+
         canNotMoveAgain = false;
-        playerMoveScript.moveToMe = false;
+        moveToMe = false;
         moveToMe2 = false;
     }
 
-    // Update is called once per frame
+    // Update
     void Update()
     {
-        if (playerMoveScript.moveToMe == true)
+        if (moveToMe == true)
         {
-            playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos.transform.position, 4500f * Time.deltaTime);
+            Vector3 direction = (targetPos.transform.position - playerObj.position).normalized;
+            controller.Move(direction * 600f * Time.deltaTime);
         }
         
         if (moveToMe2 == true)
         {
-            playerObj.transform.position = Vector3.MoveTowards(playerObj.transform.position, targetPos2.transform.position, 4500f * Time.deltaTime);
+            Vector3 direction = (targetPos2.transform.position - playerObj.position).normalized;
+            controller.Move(direction * 500f * Time.deltaTime);
         }
 
         if (canNotMoveAgain == true)
@@ -51,7 +57,7 @@ public class MovePlayer : MonoBehaviour
         {
             if (canNotMoveAgain == false)
             {
-                playerMoveScript.moveToMe = true;
+                moveToMe = true;
                 canNotMoveAgain = true;
 
                 if (bossPush != null)
@@ -69,7 +75,7 @@ public class MovePlayer : MonoBehaviour
 
         if (other.CompareTag("targetPosLvl3"))
         {
-            playerMoveScript.moveToMe = false;
+            moveToMe = false;
 
             if (moveToMe2 == true)
             {
