@@ -9418,6 +9418,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2300834140130315564, guid: 0a79278e6f2cb7d43b1c3a73afa6f41d, type: 3}
   m_PrefabInstance: {fileID: 563177612}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &567989930
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2536884901098920724, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: dialogueLines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536884901098920724, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: 'dialogueLines.Array.data[0]'
+      value: Do you see the blinking in the sky?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536884901098920724, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: 'dialogueLines.Array.data[1]'
+      value: That is our brethren fighting the angels
+      objectReference: {fileID: 0}
+    - target: {fileID: 4905848781561693886, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_Name
+      value: Npc1 (1) 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -611.57605
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 317.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 77.232605
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093568159947943456, guid: eff6e70861802d04781662db592396bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eff6e70861802d04781662db592396bd, type: 3}
 --- !u!1001 &570509214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68423,3 +68492,4 @@ SceneRoots:
   - {fileID: 2097577427}
   - {fileID: 641474174}
   - {fileID: 1233414449}
+  - {fileID: 567989930}
