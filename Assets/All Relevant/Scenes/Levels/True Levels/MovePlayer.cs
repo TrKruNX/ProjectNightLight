@@ -12,7 +12,8 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] private GameObject fakeEnemy;
     [SerializeField] private GameObject bossFightBlocks;
 
-    
+    public AudioSource bossPush;
+
     public bool moveToMe2;
     public bool canNotMoveAgain;
 
@@ -52,7 +53,11 @@ public class MovePlayer : MonoBehaviour
             {
                 playerMoveScript.moveToMe = true;
                 canNotMoveAgain = true;
-                Debug.Log("whynotwork");
+
+                if (bossPush != null)
+                {
+                    bossPush.Play();
+                }
             }
             else
             {
