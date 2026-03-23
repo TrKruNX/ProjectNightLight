@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossFightScript : MonoBehaviour
@@ -10,6 +11,11 @@ public class BossFightScript : MonoBehaviour
     public bool bossOngoing;
     public bool bossDead;
 
+    private bool bossStart2;
+    private float timer = 5f;
+    private float bossTimer;
+    [SerializeField] private GameObject bossTutText;
+
     public int boxesDestroyedBoss;
 
     [Header("Voice")]
@@ -17,11 +23,14 @@ public class BossFightScript : MonoBehaviour
     public AudioSource boss3Box;
     public AudioSource boss8Box;
     public AudioSource bossDeath;
+    public AudioSource level3Start;
+
 
 
     private void Start()
     {
         bossOngoing = false;
+        bossStart2 = false;
     }
 
     // Update is called once per frame
@@ -29,6 +38,7 @@ public class BossFightScript : MonoBehaviour
     {
         if (bossOngoing)
         {
+
             if (bossStart != null)
             {
                 bossStart.Play();
@@ -37,6 +47,7 @@ public class BossFightScript : MonoBehaviour
             if (boxesDestroyedBoss == 0)
             {
                 Stage1.SetActive(true);
+                TimerTwo();
             }
 
 
@@ -73,6 +84,24 @@ public class BossFightScript : MonoBehaviour
                 }
             }
 
+            if (bossStart2 == true)
+            {
+                bossTutText.SetActive(true);
+                bossTimer -= Time.deltaTime;
+
+                if (bossTimer <= 0f)
+                {
+                    bossTutText.SetActive(false);
+                    bossStart2 = false;
+                }
+            }
+
         }
+    }
+
+    void TimerTwo()
+    {
+        bossStart2 = true;
+        bossTimer = timer;
     }
 }
