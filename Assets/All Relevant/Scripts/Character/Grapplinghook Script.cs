@@ -99,7 +99,6 @@ public class GrapplinghookScript : MonoBehaviour
             {
                 crossHairActive_Blue.SetActive(false);
                 crossHairActive_Red.SetActive(false);
-
             }
         }
         else
@@ -132,7 +131,7 @@ public class GrapplinghookScript : MonoBehaviour
             }
             else
             {
-                targetPos = Vector2.zero;
+                targetPos = Vector3.zero;
             }
 
             if (isObjGrapple == true)
